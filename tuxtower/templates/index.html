@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">Welcome to TuxTower</h1>
-<p>This is a work in development.</p>
-<p>Click <a href="{{ get_url(path='@/blog/_index.md') }}">here</a> to see my posts.</p>
+<div class="home">
+    <h1 class="title">TuxTower</h1>
+    <img src="https://picoshare.tuxtower.net/-WyVCecPqXh/mountain1Purple.png" style="width:560px;">
+    <p>Click <a href="{{ get_url(path='@/blog/_index.md') }}">here</a> to see my posts.</p>
+    <div>
+        <a href="{{ get_url(path='/') }}">home</a> ||
+        <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> ||
+        <a href="https://youtube.com/c/jamesscholz">youtube</a> ||
+        <a href="https://drive.google.com/file/d/17CnAyDkTUckt3jNoQjzsUmVlzP1jdp6t/view?usp=sharing">resume</a> ||
+        <a href="https://tuxtower.net/contact.html">contact</a>
+    </div>
+</div>
 {% endblock content %}

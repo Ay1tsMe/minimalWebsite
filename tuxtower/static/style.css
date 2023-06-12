@@ -1,61 +1,72 @@
-/* Reset some default browser styles */
-body, h1, p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Set font and background color for the body */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-  /* Style headings */
-  h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* Style paragraphs */
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  /* Style links */
-  a {
-    color: #0066cc;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Style containers */
-  .container {
-    width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  /* Style buttons */
-  .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #0066cc;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #0050a0;
-  }
-  
+@font-face {
+  font-family: "Nexus";
+  src: url("fonts/Nexus-ZV54m.ttf");
+}
+
+.home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 80px;
+  font-family: "Nexus";
+  margin: 20px;
+}
+
+.blog-title {
+  text-align: center;
+  font-size: 50px;
+  margin: 20px;
+}
+
+.navbar {
+  text-align: center;
+  word-spacing: 10px;
+  font-weight: bold;
+  font-family: "Nexus";
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.blog-nav {
+  text-align: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-nav a {
+  text-decoration: none;
+}
+
+.blog-nav ul {
+  text-align: left;
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.blog-subhead {
+  text-align: left;
+  font-size: 30px;
+  margin: 20px;
+}
+
+.date {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.blog {
+  text-align: left;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
