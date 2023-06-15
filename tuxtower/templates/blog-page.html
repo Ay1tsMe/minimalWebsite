@@ -3,7 +3,7 @@
 {% block content %}
 <div class="blog">
 
-  <h1 class="blog-title">
+  <h1 class="blog-header">
     TuxTower's Blog
   </h1>
   <hr>
@@ -21,6 +21,8 @@
     </h1>
     <p class="subtitle"><strong>{{ page.date }}</strong></p>
     {{ page.content | safe }}
+    <hr>
+    <a href="#" class="back-to-top">Back to top.</a>
     {% endblock content %}
   </div>
 </div>

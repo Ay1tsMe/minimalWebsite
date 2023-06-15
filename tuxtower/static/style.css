@@ -3,6 +3,8 @@
   src: url("fonts/Nexus-ZV54m.ttf");
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 .home {
   position: absolute;
   top: 50%;
@@ -19,10 +21,11 @@
   margin: 20px;
 }
 
-.blog-title {
+.blog-header {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   margin: 20px;
+  font-family: 'Sans';
 }
 
 .navbar {
@@ -34,6 +37,22 @@
 
 .navbar a {
   text-decoration: none;
+  color: rgb(174, 106, 238);
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: rgb(94, 27, 156);
+}
+
+.home-navbar a {
+  text-decoration: none;
+  color: rgb(174, 106, 238);
+  transition: color 0.3s ease;
+}
+
+.home-navbar a:hover {
+  color: rgb(94, 27, 156);
 }
 
 .blog-nav {
@@ -41,6 +60,7 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Sans';
 }
 
 .blog-nav a {
@@ -69,4 +89,25 @@
   width: 50%;
   margin-left: auto;
   margin-right: auto;
+  font-family: 'Sans';
+}
+
+.blog-title {
+  text-align: center;
+  font-size: 35px;
+  margin: 30px;
+}
+
+.subtitle {
+  font-size: 14px;
+}
+
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.quote {
+  font-style: italic;
 }
