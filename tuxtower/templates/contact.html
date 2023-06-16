@@ -2,9 +2,11 @@
 
 {% block content %}
 <div class="home">
-    <h1 class="title">TuxTower</h1> 
-    <img src="{{ get_url(path='images/island1.jpg') }}" style="width:560px;">
-    <p id="quote" class="quote"></p>
+    <h1 class="title">TuxTower</h1>
+    <hr>
+    <div class="contact">            
+        {{ page.content | safe }}
+    </div>
     <hr>
     <div class="home-navbar">
         <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
@@ -15,5 +17,6 @@
         <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree"> 
     </div>
     <hr>
+    
 </div>
 {% endblock content %}
