@@ -26,9 +26,9 @@
 
 .blog-header {
   text-align: center;
-  font-size: 40px;
+  font-size: 70px;
   margin: 20px;
-  font-family: 'Sans';
+  font-family: 'Paradise';
 }
 
 .navbar {
@@ -50,6 +50,8 @@
 }
 
 .home-navbar a {
+  font-family: "Paradise";
+  font-size:30px;
   text-decoration: none;
   color: rgb(174, 106, 238);
   transition: color 0.3s ease;
