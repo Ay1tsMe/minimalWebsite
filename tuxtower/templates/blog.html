@@ -25,5 +25,12 @@
     {% endfor %}
   </ul>
   <hr>
+  <footer>
+    <div class="footer">
+      <a href="{{ get_url(path='rss.xml') }}">
+        <img src="{{ get_url(path='images/rss.svg') }}" alt="rss">
+      </a>
+    </div>
+  </footer>
   {% endblock content %}
 </div>

@@ -6,6 +6,9 @@
   <link rel="icon" type="image/x-icon" href="{{ get_url(path='images/favicon.ico') }}"/>
   <link rel="stylesheet" href="{{ get_url(path='style.css') }}">
   <script src="{{ get_url(path='script.js') }}"></script>
+  {% block rss %}
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
+  {% endblock %}
   <title>TuxTower</title>
 </head>
 

@@ -24,6 +24,13 @@
     {{ page.content | safe }}
     <hr>
     <a href="#" class="back-to-top">Back to top.</a>
+    <footer>
+      <div class="footer">
+        <a href="{{ get_url(path='rss.xml') }}">
+          <img src="{{ get_url(path='images/rss.svg') }}" alt="rss">
+        </a>
+      </div>
+    </footer>
     {% endblock content %}
   </div>
 </div>
