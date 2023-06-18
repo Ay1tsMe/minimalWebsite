@@ -20,7 +20,6 @@
     List of Blog Posts
   </h2>
   <ul>
-    <!-- If you are using pagination, section.pages will be empty. You need to use the paginator object -->  
     {% for page in section.pages %}
     <li>[<span class="date">{{ page.date }}</span>] <a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
     {% endfor %}
