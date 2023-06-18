@@ -8,6 +8,27 @@
   src: url("fonts/Nexus-ZV54m.ttf");
 }
 
+.top-right-gif {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+}
+
+.left-gif {
+  position: fixed;
+  top: 300px;
+  left: 200px;
+  width: 200px;
+}
+
+.right-gif {
+  position: fixed;
+  top: 300px;
+  right: 200px;
+  width: 200px;
+}
+
 .home {
   position: absolute;
   top: 50%;
@@ -35,7 +56,6 @@
   font-size: 40px;
   text-align: center;
   word-spacing: 10px;
-  font-weight: bold;
   font-family: "Paradise";
 }
 
