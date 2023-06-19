@@ -130,10 +130,34 @@
   font-size: 14px;
 }
 
+.blog-content img {
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+
+.blog-content iframe {
+  display: block;
+  margin: auto;
+  padding: 20px;
+}
+
+.back-to-top-container {
+  text-align: center;
+}
+
 .back-to-top {
-  display: flex;
-  justify-content: center;
-  font-size: 15px;
+  font-family: "Paradise";
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: rgb(174, 106, 238);
+  transition: color 0.3s ease;
+}
+
+.back-to-top:hover{
+  color: rgb(94, 27, 156);
 }
 
 .quote {
