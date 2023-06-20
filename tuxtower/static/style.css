@@ -56,7 +56,13 @@
 }
 
 .home-image{
-  width: 100%;
+  width: 75%;
+}
+/* Mobile */
+@media (max-width: 1000px) {
+  .home-image {
+    width: 100%;
+  }
 }
 
 .title {
