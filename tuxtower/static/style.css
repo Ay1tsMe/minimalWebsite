@@ -14,7 +14,14 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 20%;
+}
+
+/* Mobile */
+@media (max-width: 912px) {
+  .top-right-gif{
+    width: 50%;
+  }
 }
 
 .left-gif {
@@ -63,6 +70,22 @@
   .home-image {
     width: 100%;
   }
+}
+
+.guestbook {
+  margin-top: 20px;
+  font-family: "Paradise";
+  font-size: 30px;
+  color: rgb(174, 106, 238);
+}
+
+.guestbook-link {
+  color: rgb(174, 106, 238);
+  transition: color 0.3s ease;
+}
+
+.guestbook-link:hover {
+  color: rgb(94, 27, 156);
 }
 
 .title {
