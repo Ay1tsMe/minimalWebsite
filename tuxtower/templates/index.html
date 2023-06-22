@@ -4,23 +4,28 @@
 <img class="top-right-gif" src="{{ get_url(path='images/treesSway.gif') }}" alt="treesSway">
 <img class="left-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
 <img class="right-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
-<div class="home">
-    <h1 class="title">TuxTower</h1> 
-    <img src="{{ get_url(path='images/island1.jpg') }}" class="home-image">
-    <p id="quote" class="quote"></p>
-    <hr>
-    <div class="home-navbar">
-        <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='/') }}">home</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="https://github.com/Ay1tsMe">github</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='@/contact.md') }}">contact</a>
-        <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree"> 
-    </div>
-    <hr>
-    <div class="guestbook">
-        <img src="{{ get_url(path='images/guestbook.gif') }}" alt="guestbook">
-        <p>If you like this site, <a href="https://tuxtower.123guestbook.com/" target="_blank" class="guestbook-link">sign my guestbook.</a></p>
+<div class="home-container">
+    <div class="home">
+        <h1 class="title">TuxTower</h1> 
+        <img src="{{ get_url(path='images/island1.jpg') }}" class="home-image">
+        <p id="quote" class="quote"></p>
+        <hr>
+        <div class="home-navbar">
+            <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='/') }}">home</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="https://github.com/Ay1tsMe">github</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='@/contact.md') }}">contact</a>
+            <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree"> 
+        </div>
+        <hr>
+        <div class="guestbook">
+            <img src="{{ get_url(path='images/guestbook.gif') }}" alt="guestbook">
+            <p>If you like this site, <a href="https://tuxtower.123guestbook.com/" target="_blank" class="guestbook-link">sign my guestbook.</a></p>
+        </div>
+        <div class="chatbox">
+            <iframe src="https://www3.cbox.ws/box/?boxid=3529373&boxtag=08Kgur" width="100%" height="300" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>	
+        </div>
     </div>
 </div>
 {% endblock content %}

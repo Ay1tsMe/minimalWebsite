@@ -4,21 +4,23 @@
 <img class="top-right-gif" src="{{ get_url(path='images/treesSway.gif') }}" alt="treesSway">
 <img class="left-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
 <img class="right-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
-<div class="home">
-    <h1 class="title">TuxTower</h1>
-    <hr>
-    <div class="contact">            
-        {{ page.content | safe }}
+<div class="home-container">
+    <div class="home">
+        <h1 class="title">TuxTower</h1>
+        <hr>
+        <div class="contact">            
+            {{ page.content | safe }}
+        </div>
+        <hr>
+        <div class="home-navbar">
+            <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='/') }}">home</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="https://github.com/Ay1tsMe">github</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
+            <a href="{{ get_url(path='@/contact.md') }}">contact</a>
+            <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree"> 
+        </div>
+        <hr>
     </div>
-    <hr>
-    <div class="home-navbar">
-        <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='/') }}">home</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="https://github.com/Ay1tsMe">github</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
-        <a href="{{ get_url(path='@/contact.md') }}">contact</a>
-        <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree"> 
-    </div>
-    <hr>
 </div>
-{% endblock content %}
+    {% endblock content %}

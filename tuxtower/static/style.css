@@ -10,11 +10,16 @@
   src: url("fonts/Nexus-ZV54m.ttf");
 }
 
+.body {
+  overflow-y: auto;
+}
+
 .top-right-gif {
   position: fixed;
   top: 0;
   right: 0;
   width: 20%;
+  z-index: -1;
 }
 
 /* Mobile */
@@ -29,6 +34,7 @@
   top: 300px;
   left: 200px;
   width: 200px;
+  z-index: -1;
 }
 
 
@@ -37,6 +43,7 @@
   top: 300px;
   right: 200px;
   width: 200px;
+  z-index: -1;
 }
 
 /* Mobile */
@@ -46,13 +53,16 @@
     opacity: 0%;
   }
 }
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
 
 .home {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
+  margin-top: 10vh;
+  max-height: 90%;
   text-align: center;
 }
 /* Mobile */
@@ -73,10 +83,11 @@
 }
 
 .guestbook {
+  float: left;
   margin-top: 20px;
   font-family: "Paradise";
   font-size: 30px;
-  color: rgb(174, 106, 238);
+  color: #ae6aee;
 }
 
 .guestbook-link {
@@ -86,6 +97,19 @@
 
 .guestbook-link:hover {
   color: rgb(94, 27, 156);
+}
+
+.chatbox {
+  float: right;
+  margin-top: 20px;
+}
+
+/* Mobile */
+@media (max-width: 1000px) {
+  .guestbook,
+  .chatbox {
+    float: none;
+  }
 }
 
 .title {
