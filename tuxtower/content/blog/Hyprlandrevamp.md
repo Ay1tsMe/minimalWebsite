@@ -5,7 +5,7 @@ date = 2023-10-26
 
 {{ resize_image(path="images/blog/rice.jpg", width=600, height=400 op="fit") }}
 
-Over the past couple day, I've slowly been transitioning my overall Hyprland colour scheme/aesthetic from the Dracula theme to a more dynamic theme that I can change on the fly. The program that has helped me achieve this is `pywal`. My old Dracula theme was nice but after a few months it was time to change it up. Approaching this change, I didn't want to have to adjust all my colour scheme manually across all my programs everytime I wanted something different. Hence `pywal` was the answer. You can check out my old Hyprland setup [here:](@/blog/Hyprland.md)
+Over the past couple of days, I've slowly been transitioning my overall Hyprland colour scheme/aesthetic from the Dracula theme to a more dynamic theme that I can change on the fly. The program that has helped me achieve this is `pywal`. My old Dracula theme was nice but after a few months it was time to change it up. Approaching this change, I didn't want to have to adjust all my colour scheme manually across all my programs everytime I wanted something different. Hence `pywal` was the answer. You can check out my old Hyprland setup [here:](@/blog/Hyprland.md)
 
 # pywal
 This piece of software enables the user to change the colour scheme of their system based of the colours in a wallpaper. I'm sure plenty of r/unixporn farmers know about this software. It's a great tool that I have now incorporated into Hyprland system. Whenever my wallpaper changes, the colour scheme also changes along with it. From Discord, kitty, waybar, mako, brave and many more programs all change colour schemes whenever my wallpaper is changed. 
