@@ -19,6 +19,9 @@ I thought this might be a bit of a challenge as Hyprland runs on the Wayland com
 # Plans in the future...
 The only part of my setup that is unable to change colour schemes on the fly are programs that use GTK. I'm not sure if this is because I havn't set it up correctly or whether it's just not possible in Wayland at the moment. I saw a solution on this <a href="https://www.schotty.com/Cheatsheets/Pywal_cheatsheet/" target="_blank">Pywal Cheatsheet</a> but I was unable to get this working. This is probably to do with `xresources` on Wayland. If anyone knows a solution, let me know in this <a href="https://github.com/dylanaraps/pywal/issues/718" target="_blank">github issue.</a> In the meantime, my solution has been to step away from GTK applications. I used to use Thunar as my file manager but now I've started using nnn.
 
+EDIT (2023-11-12): As of writing this, I finally found a way to change my GTK with pywal. There is a project called [`phocus`](https://github.com/phocus/gtk) which enables you to create your own GTK theme with `scss`. So what I did was, I created a `pywal` template file that generated all the colours in `scss` and then used that file as the colour file for `phocus`. I then used their built in command to watch and reload the colour scheme everytime the colours file is changed. This results in a seamless colour scheme update everytime I run `pywal`! :)
+
+
 # Scripts
 Here you can find two of the scripts I use for the colour scheme changing:
 - <a href="https://github.com/Ay1tsMe/walset" target="_blank">`walset`</a>: Script to set the wallpaper across my wayland applications
