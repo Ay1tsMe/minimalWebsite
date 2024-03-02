@@ -226,6 +226,11 @@
   padding-bottom: 10px;
 }
 
+/* word wrap for code blocks */
+pre, code {
+  white-space: pre-wrap;
+}
+
 .back-to-top-container {
   text-align: center;
 }
