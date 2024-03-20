@@ -231,6 +231,28 @@ pre, code {
   white-space: pre-wrap;
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th {
+  background-color: #f6f8fa;
+  text-align: left;
+  border: 1px solid #d1d5da;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid #d1d5da;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f6f8fa;
+}
+
 .back-to-top-container {
   text-align: center;
 }
