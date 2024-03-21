@@ -11,7 +11,7 @@ It is not a type of dinosaur as the name might imply. A dactyl manuform is an or
 
 <img alt="dactyl" width="600" src="https://i.etsystatic.com/38219262/r/il/61dc27/4985597309/il_fullxfull.4985597309_6iyz.jpg" />
 
-There are multiple layouts and customization options for the keyboard that you can choose from. A great website which you can use to generate STL files is INSERT HERE. I opted for a 4x5 size with a default layout as I have pretty small hands.
+There are multiple layouts and customization options for the keyboard that you can choose from. A great website which you can use to generate STL files is [here](https://ryanis.cool/dactyl/#manuform). I opted for a 4x5 size with a default layout as I have pretty small hands.
 
 ## The Parts
 To build the keyboard, you need the following parts which almost all can be bought for very cheap from Aliexpress. Some of the parts I bought in bulk but you most likely won't need as much for the actual build:
