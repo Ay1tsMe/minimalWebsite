@@ -7,13 +7,13 @@ Over the past month, I have been travelling all around Auckland, New Zealand wit
 
 Overall, it was an amazing experience that was definitely worth doing. It was interesting to see the differences between both New Zealand and Australia. You would think that because the two countries are close to each other geographically as well as having a strong political relationship that the countries would be similar. This wasn't the case. Here are some major differences that make New Zealand unique to Australia.
 
-## The Landscape
+# The Landscape
 New Zealand consists of huge mountains that are located all around the outer suburbs. Beautiful mountains surround the landscape and located west of Auckland were some amazing trails within some of these mountains. It felt a bit like Australia's "country". Australia is mainly flatlands and only if you drive 2 to 3 hours outside of Perth, then you would see mountains and agriculture. Whereas New Zealand's agriculture is built right in the heart of the city. You only need to drive 20 minutes outside of Auckland to see cows and sheep.
 
-## The Weather
+# The Weather
 During my months stay, the weather mainly consisted of warm weather with a lovely cool breeze. The temperature didnt reach higher than 28 degrees which was perfect for me. While I was relaxing in the nice cool climate, back at home it reached a scorching 42 degrees. It was nice to get away from the heat for a while, although I think Australia's weather is much more comfortable all year round whereas New Zealand can get to really cold temperatures especially in winter. It's pretty much the England of the southern hemisphere.
 
-## The People
+# The People
 While Australia is a very multicultural country, New Zealand's demographic of people is in my opinion more diverse. A lot of the diversity of Australia comes from European immigration. Whereas New Zealand has lots more Indians, Asians and Islanders particularly in the southern suburbs where I stayed. This is great if you want a diverse range of amazing cuisines from curry's to Hāngī to dumplings. However, after 2 to 3 weeks of being there, I was missing a freshly cooked wood fired pizza and I wasn't able to find a good Italian cuisine in New Zealand due to there not being any Italians around. I was missing my fellow wogs.
 
 # 27 Minute Montage... YIKES
