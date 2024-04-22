@@ -1,18 +1,14 @@
+
 {% extends "base.html" %}
 
 {% block content %}
-<img class="top-right-gif" src="{{ get_url(path='images/treesSway.gif') }}" alt="treesSway">
-<img class="left-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
-<img class="right-gif" src="{{ get_url(path='images/circleTree.gif') }}" alt="circleTree">
-<div class="home-container">
-    <div class="home">
-        <h1 class="title">TuxTower</h1>
-        <hr>
-        <div class="contact">            
-            {{ page.content | safe }}
-        </div>
-        <hr>
-        <div class="home-navbar">
+<div class="blog">
+
+  <h1 class="blog-header">
+    TuxTower's Blog
+  </h1>
+  <hr>
+        <div class="navbar">
             <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
             <a href="{{ get_url(path='/') }}">home</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
             <a href="{{ get_url(path='@/blog/_index.md') }}">blog</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
@@ -20,7 +16,24 @@
             <a href="{{ get_url(path='@/guitar.md') }}">guitar</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
             <a href="{{ get_url(path='@/contact.md') }}">contact</a> <img src="{{ get_url(path='images/palm2.png') }}" alt="" class="palm-tree">
         </div>
-        <hr>
+  <hr>
+  <div class="blog-content">
+    <h1 class="blog-title">
+      {{ page.title }}
+    </h1>
+    <p class="subtitle"><strong>{{ page.date }}</strong></p>
+    {{ page.content | safe }}
+    <hr>
+    <div class="back-to-top-container">
+      <a href="#" class="back-to-top">Back to top</a>
     </div>
+  </div>
+  <footer>
+    <div class="footer">
+      <a href="{{ get_url(path='rss.xml') }}">
+        <img src="{{ get_url(path='images/rss.svg') }}" alt="rss">
+      </a>
+    </div>
+  </footer>
+  {% endblock content %}
 </div>
-    {% endblock content %}
