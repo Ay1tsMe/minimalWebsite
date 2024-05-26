@@ -8,7 +8,7 @@ var quotes = [
     "iPods are cool, iPhones are cringe",
     "Hyprland is based",
     "Wayland is the future",
-    "Sign my guestbook below... Please"
+    "Sign my guestbook below... Please",
     "If your keyboard isn't split... what are you doing?",
     "Church of Emacs",
     "https://tuxtower.net",
