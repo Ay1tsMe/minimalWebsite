@@ -19,6 +19,13 @@ var quotes = [
     "I got rid of my mattress, it's bloat",
     "Look's like Arch Linux broke once again",
     "Imagine using VS Code",
+    "May your heart be your guiding key",
+    "Donald still doesn't heal me",
+    "Sora for Smash",
+    "Looks like my summer vacation... is over",
+    "🌴",
+    "🖥",
+    "💾",
     "/home/tuxtower/.config"
   ];
   
@@ -27,9 +34,30 @@ var quotes = [
     var randomIndex = Math.floor(Math.random() * quotes.length);
     return quotes[randomIndex];
   }
-  
+
+  // Function to get a random integer between min (inclusive) and max (inclusive)
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  // Function to change the image source to a random image
+  function changeRandomImage() {
+    const totalImages = 6;
+    const randomImageNumber = getRandomInt(1, totalImages);
+    const randomImagePath = `images/gifs/destinyisland${randomImageNumber}.gifv`;
+
+    const imgElement = document.getElementById('randomImage');
+    if (imgElement) {
+      imgElement.src = randomImagePath;
+    } else {
+      console.error('Image element not found');
+    }
+  }
+
   // Update the quote on page load
   window.addEventListener("load", function() {
     var quoteElement = document.getElementById("quote");
-    quoteElement.textContent = '"' + getRandomQuote() + '"';
+    quoteElement.textContent = getRandomQuote();
+
+    changeRandomImage();
   });
