@@ -54,6 +54,13 @@ var quotes = [
     }
   }
 
+  function play() {
+    var audio = document.getElementById("audio");
+    audio.volume = 0.7;
+    audio.loop = true;
+    audio.play();
+  }
+
   // Update the quote on page load
   window.addEventListener("load", function() {
     var quoteElement = document.getElementById("quote");

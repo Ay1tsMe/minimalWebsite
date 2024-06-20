@@ -64,6 +64,7 @@
   margin-top: 10vh;
   max-height: 90%;
   text-align: center;
+  width: 85%;
 }
 /* Mobile */
 @media (max-width: 1000px) {
@@ -117,6 +118,14 @@
   font-size: 80px;
   font-family: "Paradise";
   margin: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.title:hover {
+  color: rgb(174, 106, 238);
+  text-shadow: 0 0 10px rgb(174, 106, 238);
 }
 
 .blog-header {
