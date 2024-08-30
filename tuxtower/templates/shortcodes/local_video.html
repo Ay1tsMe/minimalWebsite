@@ -1,0 +1,5 @@
+<div class="video-container">
+    <video width="{{ width | default(value="640") }}" height="{{ height | default(value="360") }}" controls {% if autoplay %}autoplay{% endif %} {% if loop %}loop{% endif %}>
+        <source src="{{ get_url(path=path) }}" type="video/mp4">
+    </video>
+</div>

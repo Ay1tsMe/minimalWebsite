@@ -4,6 +4,9 @@ date = 2024-08-26
 +++
 
 # "Why do I need to rip CD's? I got Spotify instead..."
+
+{{ resize_image(path="images/blog/cd.jpg", width=600, height=800 op="fit") }}
+
 This is the opinion of most people nowadays with the adoption of streaming platforms becoming mainstream technology. While I do think it is very convienant to be able to play any song I want from my device just by looking it up. The convienance is often blinded by the fact that you dont actually own the music your listening too. If you were to stop paying for your Spotify subscription today, all of a sudden your cherished playlists with all your favourite songs are washed away. You dont own those playlists and you dont own those songs. You are simply renting them and most people dont take that into consideration. They will be eager to pay for a subscription service with the false pretence that you now own all these songs and movies. Thats where physical media comes into play.
 
 Over the years, my family used to purchase physical CD's to listen to music. Still to this day, I can grab one of those CD's and play it even though it is 30 years old. The only problem is I have to physically grab the CD and play it in that specific room. What if I wanted to play it on my phone or even outside my house? To solve this issue, I set up a Jellyfin server to manage and store my music. That way I can play it anywhere I want. 
@@ -19,6 +22,9 @@ Over the years, my family used to purchase physical CD's to listen to music. Sti
 I will go through step by step on how I rip and tag CD's for Jellyfin on Linux. Most of the software that I suggest can run on most OS's but if it doesn't, there should be an alternative for your OS. This method I have found to be the best in terms of tagging and compatibility when it comes to importing your library into other music managing software.
 
 # Ripping the CD (abcde)
+
+{{ resize_image(path="images/blog/abcde.png", width=700, height=800 op="fit") }}
+
 First we need to rip the CD itself. The best program I have found that does this is [`abcde`](https://abcde.einval.com/wiki/FrontPage). This software by default rips a CD as a .wav file. This is all good but with a little bit of configuration, we can get it to encode the file to a .flac for us aswell as do some basic tagging with MusicBrainz. This is very convient because .flac is generally the standard for lossless audio if we want to have the best soundquality without the file being too large. And doing some of the tagging for us helps us later when we need to tag each album with `Picard`. I think this program only works on Linux systems but if you are on Windows or Mac, you can just rip the CD with whatever software you prefer and then use `ffmpeg` to convert the .wav to a .flac
 
 ### Installing abcde
@@ -135,15 +141,18 @@ EJECTCD=y                               # Please eject cd when finished :-)
 It's super simple to run. All you do is insert your CD into your disc drive and then run `abcde` in your terminal. If MusicBrainz finds tags for your CD, it will prompt you to select which version. It will then ask if you want to edit the tagging data. I normally pick no even if the album is not automatically detected as we will be using MusicBrainz Picard later to fully tag the music. It will then prompt if it's a multiartist album and then thats it. In a few minutes you will have your music ripped off your CD!!!
 
 # Tagging the files
+
+{{ resize_image(path="images/blog/musicbrainz.png", width=700, height=800 op="fit") }}
+
 The current standard for tagging music is to use [MusicBrainz](https://musicbrainz.org/) database. This is an open-source database where anyone can contribute the metadata for albums. Most of my CD's that I own have been in this database. If for some reason yours isn't, you can always contribute your album to the database. That way once it's in you can use your album release to tag the .flac's you just ripped aswell as allowing other people to use your release to tag their music. 
 
-MusicBrainz convientaly has a program called [`Picard`](https://picard.musicbrainz.org/) which we will be using to tag our albums using their database.
+MusicBrainz convientaly has a program called [Picard](https://picard.musicbrainz.org/) which we will be using to tag our albums using their database.
 
 ### Installing Picard
 `Picard` can be installed in pretty much every OS. Instructions for your OS can be found on this [page.](https://picard.musicbrainz.org/downloads/) 
 
 ### Configuring Picard
-After lots of tinkering and finding the right way to tag music efficiently, these are the current settings I use inorder for your music to be imported correctly by music managing software such as `Jellyfin` or `Navidrome`. 
+After lots of tinkering and finding the right way to tag music efficiently, these are the current settings I use inorder for your music to be imported correctly by music managing software such as [Jellyfin](https://github.com/jellyfin/jellyfin) or [Navidrome](https://github.com/navidrome/navidrome). 
 
 #### Accounting for Multiple Artists
 Firstly, we want to make sure multiple artists are handled correctly. By default, Picard does not tag multiple artists in a way that is handled smoothly by `Jellyfin`. If you use Picard's defaults, you will have lots of artists labelled:
@@ -166,11 +175,19 @@ Elton John; Melbourne Symphony Orchestra
 ```
 
 #### Using Artist Locales and fixing artists with multiple names
+
 There are some cases where certain artists will have non-english letters in there name or they will go through a name change. This can lead to artists not being in english aswell as artists that are the same but have multiple artist profile for each name, for example "The Jacksons" and "The Jackson 5" being two seperate artists.
+
+{{ resize_image(path="images/blog/artistlocale.png", width=700, height=800 op="fit") }}
 
 To fix this, go to `Options` then `Metadata`. Enable `Translate artist names to these locales where possible` and select `English`. Then enable `Use standardized names`.
 
 This will ensure that the artist name will always be in english as well as avoiding duplicate artist profiles with different names.
+
+#### Tagging Genres
+By default, Picard doesn't do a very good job with tagging genres. There are lots of occurences where albums will having missing genre tags or albums will have random tags that make no sense. Luckily, we can install some built in plugins that improves the tagging for genres. The plugin I found to be the best is the "Wikidata Genre" plugin. Keep in mind that enabling this plugin will heavily slow down loading albums into Picard. This is because Picard has to grab extra tagging data from the Wikidata API. If you're okay with waiting a little longer for Picard to load the metadata for albums then use this plugin to get better genres. Otherwise you can skip this option. 
+
+You can install this plugin by going to `Options` then `Plugins`. Then you can download "Wikidata Genre" from the plugins list. This will heavily improve the tagging for genres to ensure that your music collection is tagged consistently. This plugin helped clean up my disgusting genre section in Jellyfin to be much more user-friendly to navigate.
 
 #### Downloading cover art
 Cover art is an essential if you want your music library to look clean and legitimate. The following steps will enable Picard to download a `cover.jpg` file and place in the album folder aswell as imbedding the cover art into the music files.
@@ -242,7 +259,15 @@ Your music is now tagged and ready to be used with a music managing software lik
 Currently, I use `Jellyfin` to store and manage my tagged music. I can access the website everywhere even outside my home. You can listen to your music either in your browser or you can pare your `Jellyfin` instance to a client on each device.
 
 ### Mobile phone listening
-For listening to my music on the go, I use `Finamp` to connect to my `Jellyfin` instance. It's fast and efficient and if I don't want to stream the music over the internet, I can choose which albums to download onto local storage
+For listening to my music on the go, I use [Finamp](https://github.com/jmshrv/finamp) to connect to my `Jellyfin` instance. It's fast and efficient and if I don't want to stream the music over the internet, I can choose which albums to download onto local storage
+
+{{ resize_image(path="images/blog/finamp.jpg", width=300, height=500 op="fit") }}
 
 ### Listening around the house
-Because I am running a home assistant instance for all my smart devices, I opted to use a music client which can stream my `Jellyfin` instance to my Sonos speakers through the house. `Music-Assistant` is great for this. I installed it onto home asssitant, then configured it to connect to my Sonos speakers and to `Jellyfin` and now I can listen to my music through Sonos without using their proprietary app which over the recent months has been quite [controversial](https://www.theverge.com/2024/7/25/24206203/sonos-ceo-apology-redesigned-app-controversy). And with the power of automations, I can automate to play music on my speakers at certain parts of the day!
+Because I am running a home assistant instance for all my smart devices, I opted to use a music client which can stream my `Jellyfin` instance to my Sonos speakers through the house. [Music-Assistant](https://music-assistant.io/) is great for this. I installed it onto home asssitant, then configured it to connect to my Sonos speakers and to `Jellyfin` and now I can listen to my music through Sonos without using their proprietary app which over the recent months has been quite [controversial](https://www.theverge.com/2024/7/25/24206203/sonos-ceo-apology-redesigned-app-controversy). And with the power of automations, I can automate to play music on my speakers at certain parts of the day!
+
+Here is a video showcasing that:
+{{ local_video(path="videos/sonos.mp4") }}
+
+# Video Tutorial
+Here is a video tutorial you can follow which covers everything in the blog if you prefer video tutorials. 

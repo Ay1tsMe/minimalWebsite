@@ -238,6 +238,8 @@
 /* word wrap for code blocks */
 pre, code {
   white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 table {
@@ -314,4 +316,19 @@ tr:nth-child(even) {
   padding-left: 5px;
   padding-right: 5px;
   width: 30px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 360px;
+  margin: 20px 0;
+}
+
+.video-container video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
