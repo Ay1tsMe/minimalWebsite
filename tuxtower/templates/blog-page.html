@@ -20,7 +20,34 @@
     <h1 class="blog-title">
       {{ page.title }}
     </h1>
-    <p class="subtitle"><strong>{{ page.date }}</strong></p>
+    <div class="blog-meta">
+      <p class="subtitle"><strong>{{ page.date }}</strong></p>
+      <p class="reading-time"><strong>Reading time: {{ page.reading_time }} minutes</strong></p>
+    </div>
+
+    {% if page.toc %}
+    <div class="toc">
+      <h2>Table of Contents</h2>
+        <ul>
+        {% for h1 in page.toc %}
+          <li>
+            <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+            {% if h1.children %}
+                <ul>
+                    {% for h2 in h1.children %}
+                        <li>
+                            <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+    <br>
+
     {{ page.content | safe }}
     <hr>
     <div class="back-to-top-container">

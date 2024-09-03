@@ -215,7 +215,18 @@
   margin: 30px;
 }
 
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .subtitle {
+  font-size: 14px;
+}
+
+.reading-time {
   font-size: 14px;
 }
 
@@ -331,4 +342,53 @@ tr:nth-child(even) {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.toc {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.toc h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.toc ul li {
+    margin-bottom: 8px;
+}
+
+.toc ul li a {
+    text-decoration: none;
+    color: rgb(174, 106, 238);
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.toc ul li a:hover {
+    color: rgb(94, 27, 156);
+}
+
+.toc ul ul {
+    padding-left: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.toc ul ul li a {
+    font-weight: normal;
+    color: green;
+}
+
+.toc ul ul li a:hover {
+    color: rgb(94, 27, 156);
 }
