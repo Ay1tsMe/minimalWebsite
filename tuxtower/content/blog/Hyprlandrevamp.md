@@ -1,5 +1,5 @@
 +++
-title = "Look at this beautfiul rice!"
+title = "Look at this beautiful rice!"
 date = 2023-10-26
 +++
 
