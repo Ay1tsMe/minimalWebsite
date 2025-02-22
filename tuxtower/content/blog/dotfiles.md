@@ -1,25 +1,29 @@
 +++
 title = "Using stow to manage my dotfiles"
-date = 2025-02-06
+date = 2025-02-22
 +++
 
 # "What is `stow`?"
-`stow` is a GNU program that manages symlinks across your system. It is especially useful for managing dotfiles systemwide across multiple devices. You simply run stow on the file and it will create a symlink to your desired location. Over the past month, I have been slowly migrating my dotifiles to be managed by stow, that way both my laptop and my desktop have the same dotfiles and I don't have to manually manage them anymore.
+`stow` is a GNU program that manages symlinks across your system. It is especially useful for managing dotfiles system-wide across multiple devices. You simply run `stow` on the file and it will create a symlink to your desired location. Over the past month, I have been slowly migrating my dotfiles to be managed by `stow`, that way both my laptop and my desktop have the same dotfiles and I don't have to manually manage them anymore.
+
+{{ resize_image(path="images/blog/stow.png", width=1000, height=1200 op="fit") }}
 
 # How does it work?
 The basic workflow consists of the following:
-1. Create a git which all your dotfiles inside
+1. Create a git with all your dotfiles inside
 2. Run `stow` on your git repo. (This will symbolic link all your dotfiles to your home directory)
 3. ???
 4. PROFIT!
 
-You can then download the same git repo on your other devices and run `stow` to symlink the dots to that devices home directory. Whenever you edit a dotfile, all you have to do is `git add` and `git push` the change and it will automatically synchronise update your dotfiles on your other devices when you `git pull` the changes. 
+You can then download the same git repo on your other devices and run `stow` to symlink the dots to that devices home directory. Whenever you edit a dotfile, all you have to do is `git add` and `git push` the change and it will automatically synchronise your dotfiles on all your other devices when you `git pull` the changes. 
 
-This saves you a ton of effort. Normally you would have to manually replace your dotfiles with the dotfiles in the git repo or manually write `ln -s` for every dotfile you have. Whereas with `stow` these hassles are eliminated.
+This saves you a ton of effort. Normally you would have to manually overwrite your home directory dotfiles with the dotfiles in the git repo everytime there is a change or manually write `ln -s` for every dotfile you have. Whereas with `stow` these hassles are eliminated.
+
+{{ resize_image(path="images/blog/stowwojak.jpg", width=400, height=600 op="fit") }}
 
 # How do I do this myself?
 
-[Here](https://github.com/Ay1tsMe/pywaldotfiles) is an example of my current dofiles using stow. For every dotfile you have, you have to create a 'package' folder for stow to recognise, then in that 'package' folder, you would mimic the folder structure that the dotfiles have in your home directory.
+[Here](https://github.com/Ay1tsMe/pywaldotfiles) is an example of my current dotfiles using `stow`. For every dotfile you have, you create a 'package' folder for `stow` to recognise, then in that 'package' folder, you would mimic the folder structure that the dotfiles have in your home directory. `stow` will read the contents of each 'package' and place it in your home directory.
 
 ## Example 1
 
@@ -47,7 +51,7 @@ delete:
 	stow --verbose --target=$$HOME --delete */
 ```
 
-Now when you run `make` in the repo, it will stow all the packages you have created to the home directory. You can also run `make delete` to remove the symbolic links from the home directory. 
+Now when you run `make` in the repo, it will `stow` all the packages you have created to the home directory. You can also run `make delete` to remove the symbolic links from the home directory. 
 
-`stow` also requires the target location to not exist. So if you already have the same filename or folder in your home directory as one that is in your dotfiles git repo, then `stow` will not create a symbolic link. You need to backup and remove your previous dotfile to run `stow`.
+`stow` also requires the target location to not exist. So if you already have the same filename or folder in your home directory as one that is in your dotfiles git repo, then `stow` will not create a symbolic link. You need to backup and remove your previous dotfile for `stow` to proceed.
 
