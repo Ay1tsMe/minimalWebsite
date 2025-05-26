@@ -8,7 +8,10 @@
     <div class="home">
         <h1 class="title" onclick="play()">TuxTower</h1>
         <audio id="audio" src="{{ get_url(path='music/destiny.mp3') }}"></audio>
-        <img id="randomImage" class="home-image">
+        <div class="image-wrapper">
+            <img id="randomImage" class="home-image" alt="Random image">
+            <img id="tuxImage" class="tux-image" src="{{ get_url(path='images/tux.svg') }}" alt="Tux the Linux penguin">
+        </div>
         <p id="quote" class="quote"></p>
         <hr>
         <div class="home-navbar">
