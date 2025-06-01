@@ -105,7 +105,7 @@ The fork of my USB Host Shield 2.0 library can be found [here](https://github.co
 
 ### Refactoring Wheelchair Arduino Code
 Because the old wheelchair Arduino sketch converts the UART Serial input into values that can control and operate the motors, I had to change this logic to use the X, Y and Z received over USB. I used the example Joystick sketch as a base and incorporated it into the wheelchair code. Because most of the previous code had logic to calculate the values needed to be sent to the motors, there was not much work to be done. Here as example of how it works:
-```
+```C
   // Joystick Variables
   int Xval;   // 0 - 1023
   int Yval;   // 0 - 1023
