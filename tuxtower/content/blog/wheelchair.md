@@ -5,91 +5,86 @@ date = 2025-05-16
 
 [Insert image of wheelchair original]
 
-From February to May, I've been interning for the Renewable Energy Vehicle (REV) project at the UWA. I was originally tasked to be a helper for the Autonomous Shuttle Bus but due to the job description not involving much engineering, my supervisor had thought my expertise would be more useful elsewhere. So I was relocated to one of their other projects which had been sitting, collecting dust. This happened to be the Omni-Directional Wheelchair. This is a wheelchair that was designed in 2006 as part of a students honour thesis which can be found [here.](https://robotics.ee.uwa.edu.au/theses/2006-Wheelchair-Woods.pdf) A lot of the specifications are currently outdated but the main functionality remains the same. It is a compact wheelchair capable of supporting up to 100kg of weight, it has custom-built Mecanum wheels that enable movement in any direction including lateral and rotational movements, and it operates fully from two car batteries. By the end of this, you will learn the process of how I got the wheelchair fully functioning and the hurdles I had to overcome along the way.
+From February to May, I've been interning for the [Renewable Energy Vehicle (REV)](https://therevproject.com/) project at the UWA. I was originally tasked to be a helper for the [Autonomous Shuttle Bus](https://revproject.com/vehicles/nuway.php) but due to the job description mainly involving data collection from driving the bus and not involving much engineering, my supervisor had thought my expertise would be more useful elsewhere. So I was relocated to one of their other projects which had been sitting, collecting dust. This happened to be the [Omni-Directional Wheelchair](https://robotics.ee.uwa.edu.au/omni/omni3.html). This is a wheelchair that was designed in 2006 as part of a [students honour thesis](https://robotics.ee.uwa.edu.au/theses/2006-Wheelchair-Woods.pdf). A lot of the specifications are currently outdated but the main functionality remains the same. It is a compact wheelchair capable of supporting up to 100kg of weight, it has custom-built Mecanum wheels that enable movement in any direction including lateral and rotational movements, and it operates fully from two car batteries. By the end of this blog post, you will learn the process of how I repaired the wheelchair back to a fully functioning and the challenges I had to overcome along the way.
 
 # What Happened?
-Sometime last year, the wheelchair was being used for a demo for new students and it suddenly stopped working. My job was to get this back to its normal operation. I was advised by my supervisor that they had replaced the batteries and all the fuses but it still didn't operate. So, what do we do now?
+Sometime last year, the wheelchair was being used for a demo for new students and it suddenly stopped working. I wasn't given much detail on how this happened but apparently it just lost power during the demo. My job was to get this back to its normal operation. I was advised by my supervisor that they had replaced the batteries and all the fuses but it still didn't operate. So, what do we do now?
 
-# Replacing The Micro-controller
-On the left armrest of the wheelchair is a box that contains the main internals that control and operate the wheels. The old system was running a [Lilygo T-Display v1.1](https://github.com/Xinyuan-LilyGO/TTGO-T-Display) connected to a USB Host Shield designed for an Arduino Uno through a custom PCB. My supervisor instructed me to replace the current system with a new [Lilygo T-Display S3](https://github.com/Xinyuan-LilyGO/T-Display-S3), that way we wouldn't need the bulky USB Host Shield because the S3 has built in USB Host Mode that we can utilise with the joystick. I already have the Arduino code that was on the original Lilygo, should be an easy fix right?
+# Replacing the Micro-controller
+On the left armrest of the wheelchair is a box that contains the main internals that control and operate the wheels. The old system was running a [Lilygo T-Display v1.1](https://github.com/Xinyuan-LilyGO/TTGO-T-Display) wired to a USB Host Shield designed for an [Arduino Uno](https://en.wikipedia.org/wiki/Arduino_Uno) through a custom PCB. A USB joystick was mounted to the right armrest and was plugged into the USB Host Shield. This joystick is was in control of operating the wheelchair motors. The ttgo was then wired to a [Sabertooth 2x32 dual motor controller](https://www.dimensionengineering.com/products/sabertooth2x32) which was in charge of operating each wheel. My supervisor instructed me to replace the current system with a new [Lilygo T-Display S3](https://github.com/Xinyuan-LilyGO/T-Display-S3), that way we wouldn't need the bulky USB Host Shield because the S3 has built-in USB Host Mode that we can utilise with the joystick. I already had the Arduino code that was on the original ttgo so... should be an easy fix right?
 
 [Insert image of both micro-controllers together]
 
-## Somehow not an easy fix...
-After multiple weeks of trying to get the T-Display S3 working is USB host mode, I ended up giving up as this had been proven to be more difficult that I thought. In theory, it should just be as simple as uploading USB Host Mode code to the micro-controller and plugging in a device like a keyboard or mouse. But no matter what I did, the USB device that I would plug in just wouldn't connect. I ended up having a long conversation with someone on the Arduino forum and he concluded that from reading the schematic, the reason is wasn't working was because the T-Display S3 was not outputting any voltage through the USB port. They said that there is a schottky diode that blocks the voltage from being sent over the USB port. Other users on the T-Display S3 git repo were also having issues saying they couldn't get USB host mode to work. So what do I do now?
+## Somehow not an Easy Fix...
+After multiple weeks of trying to get the T-Display S3 working in USB host mode, I ended up giving up as this had been proven to be more difficult that I thought. In theory, it should be as simple as uploading USB Host Mode code to the S3 and plugging in a device like a keyboard or mouse. But no matter what I did, the USB device that I would plug in just wouldn't connect. I ended up having a long conversation with someone on the Arduino forum and he concluded that from reading the schematic, the reason is wasn't working was because the T-Display S3 was not outputting any voltage through the USB port. They said that there is a schottky diode that blocks the voltage from being sent over the USB port. Other users on the [T-Display S3 git repo](https://github.com/Xinyuan-LilyGO/T-Display-S3/issues/288) were also having issues saying they couldn't get USB host mode to work. So what do I do now?
 
     
-# RE-Replacing The Micro-controller
-Well if I can't get the new micro-controller working, I guess I'll try and get the old one working instead. The old T-Display v1.1 still had the old Arduino code that was operating the wheelchair. The only problem was, when the joystick was plugged into the USB Host Shield attached to the T-Display, nothing would happen. I tried plugging the joystick into my laptop to see if it came up as a USB device but it didn't appear at all. So I concluded it must be faulty. There happened to be a spare joystick was exactly the same lying around in the lab so I thought if I plug in a working joystick it should work, right? Turns out it didn't. Okay maybe there's something wrong with the USB Host Shield then?
+# Re-Replacing the Micro-controller
+Well if I can't get the new S3 working, I guess I'll try and get the old ttgo working instead. The old ttgo T-Display v1.1 was still running the previous Arduino firmware that used to operate the wheelchair. The only problem was, when the joystick was plugged into the USB Host Shield attached to the ttgo, nothing would happen. I tried plugging the joystick into my laptop to see if it came up as a USB device but it didn't appear at all. So I concluded it must be faulty. There happened to be a spare joystick lying around in the lab that appeared as a USB device when I plugged it into my laptop. So I thought if I plug in a working joystick into the USB shield, it should work... right? Turns out it didn't. Okay... maybe there's something wrong with the USB Host Shield then?
 
 ## Diagnosing the USB Host Shield
-Because I couldn't get any sort of connected from the USB Host shield with the T-Display v1.1, I decided I should try connect it to a generic ESP32-wroom that I had lying around my house. The USB Host shield that I had on hand happened to have no documentation about it on the internet whatsoever. The closest thing I could find was a [Keyestudio USB Host Shield](https://wiki.keyestudio.com/Ks0155_keyestudio_USB_Host_v1.5_shield) that looked remotely close to what I was using. 
+Because I couldn't get any sort of connection from the USB Host shield with the T-Display v1.1, I decided I should try connect it to a generic [ESP32-WROOM-32](https://makerstore.com.au/product/esp32-development-board) that I had lying around my house. The USB Host shield that I had on hand happened to have no documentation about it on the internet whatsoever. The closest thing I could find was a [Keyestudio USB Host Shield](https://wiki.keyestudio.com/Ks0155_keyestudio_USB_Host_v1.5_shield) that looked remotely close to what I was using. 
 
 [Insert USB Host Shield here]
 
-This was somewhat helpful although I didn't know what each pin was for and there was no printings on the board to specify was each GPIO pin was for. Because this board is supposed to be a plug and play replacement for the Arduino Uno, I had to figure out what each pin did but looking at the pinout for the Arduino Uno. My assumption was that this Host shield would be able to work with the [USB Host Shield 2.0 library](https://github.com/felis/USB_Host_Shield_2.0). The `README` for the library has instructions on how to wire up an ESP32 with the USB Host shield. 
+This was somewhat helpful although I didn't know what each GPIO pin was specified for because the board I had did not label any of the GPIO pins. Because this board is supposed to be a plug and play replacement for the Arduino Uno, I had to figure out what each pin did by looking at the pinout for the Arduino Uno. My assumption was that this host shield would be able to work with the [USB Host Shield 2.0 library](https://github.com/felis/USB_Host_Shield_2.0). The `README` for the library has instructions on how to wire up an ESP32 with the USB Host shield. 
 
 ```
 ESP32 is supported using the arduino-esp32
 GPIO5 : SS, GPIO17 : INT, GPIO18 : SCK, GPIO19 : MISO, GPIO23 : MOSI
 ```
 
-After referring to an Arduino Uno's pinout to figure out which pins on the USB Host Shield were what, I was finally able to wire up the board to an ESP32. When I went to ran a quality control test on the board to see if it operates, I was able to pass all the tests... except for the final one. The test got stuck on "Waiting for USB Connection...", even after plugging in multiple devices. So, I guess the USB Host shield is also faulty then.
+After referring to an Arduino Uno's pinout to figure out which pins on the USB Host Shield were what, I was finally able to wire up the board to an ESP32. When I went to run a quality control test on the board to see if it operates, I was able to pass all the tests... except for the final one. The test got stuck on "Waiting for USB Connection...", even after plugging in multiple devices. So, I guess the USB Host shield is also faulty then?
 
-# Joystick and USB Host Shield faulty... So What Now?
-Both the joystick and the USB Host shield seem to be faulty so how am I supposed to get the wheelchair operating again. Mind you, my supervisor told me that they would like this wheelchair to be ready in time for Open Day so high school students can see the cool projects that students have been working on over the years. It at this point, Open Day happens to be only in a couple days!!! 
+# Joystick and USB Host Shield Faulty... So What Now?
+Both the joystick and the USB Host shield seem to be faulty, so how am I supposed to get the wheelchair operating again? Mind you, my supervisor told me that they would like this wheelchair to be ready in time for Open Day so high school students can come see the cool projects that the robotics lab have been working on over the years. And it also turns out that Open Day happens to be only in a couple days!!! 
 
 [Insert raging man ripping hair]
     
-## So You're Screwed? Not exactly...
+## So You're Screwed? Not Exactly...
 
 [Insert ps3 controller]
 
-Not exactly. After having at look at the previous code on the wheelchair, it seemed to have some logic to operate it with a PS3 controller. The controller happened to be sitting next to the wheelchair with a label "Omni-Directional Wheelchair". So maybe the controller can connect to the micro-controller. After charging it and turning on the controller for pairing, the display on the micro-controller reacted! The display that is on the micro-controller displays a bitmap of the wheelchair along with 4 number variables that display the value that is being sent to each wheel. If I moved the left analog stick around, the values for each wheel would also change. Although, the wheelchairs wheels were not reacting to this movement. I feel really close now. We just have to get the serial communication between the micro-controller and the Sabertooth and then we will have a functioning wheelchair. After some diagnosing, it seemed there was a faulty wire between the Sabertooth and the micro-controller, and after replacing that wire, the wheels were now moving!
+After having at look at the previous code on the wheelchair, it seemed to have some logic to operate it with a PS3 controller. The controller happened to be sitting next to the wheelchair with a label "Omni-Directional Wheelchair". So maybe the controller can connect to the ttgo? After charging it and turning on the controller for pairing, the display on the ttgo reacted! The display shows a bitmap of the wheelchair along with 4 number variables that display the value that is being sent to each wheel. If I moved the left analog stick around, the values for each wheel would change. Although, the wheelchairs wheels were not reacting to this movement. I feel really close now. We just have to get the serial communication between the ttgo and the Sabertooth and then we will have a functioning wheelchair. After some diagnosing, it seemed there was a faulty wire between the Sabertooth and the ttgo, and after replacing that wire, the wheels were now moving!
 
 [Insert it works wojak]
 
-# Bringing the Wheelchair back to its original working self
+# Bringing the Wheelchair Back To Its Original Self
 So the wheelchair now partially works. You can operate it using the PS3 controller and all the main functionality is there. However, the joystick and the USB Host Shield still do not work which means you have to sit with a controller on your lap instead of using the joystick that is bolted into the right arm rest.
 
 ## Replacing the Joystick
-A couple weeks pass, and a new replacement joystick arrives for me to replace. The joystick is a Logitech Xtreme 3D Pro. The wheelchair in the past has used different joysticks but the most recent iteration has used this joystick. 
+A couple weeks pass, and a new replacement joystick arrives for me to replace. The joystick is a [Logitech Extreme 3D Pro](https://www.logitechg.com/en-au/products/space/extreme-3d-pro-joystick.html). The wheelchair in the past has used different joysticks but the most recent iteration has used this one. 
 
 [Insert Logitech joystick]
 
-I unbox the joystick and try to plug it into the USB Host Shield hoping that it would work, but still no luck. What was good news though is that the joystick was able to connect to my laptop and I am able to read the inputs so I know that it works. The previous joystick would not appear on any device no matter what it was plugged into. I inform my supervisor that it could possibly be a faulty USB Host Shield, so we order the part to be replaced. 
+I unbox the joystick and try to plug it into the USB Host Shield hoping that it would work out of the box, but still no luck. What was good news though is that the joystick was able to connect to my laptop and I am able to read the inputs so I know that it works. The previous joystick would not appear on any device no matter what it was plugged into. I inform my supervisor that it could possibly be a faulty USB Host Shield, so we order the same part to be replaced. 
 
-## Replacing the USB Host Shield
-Shortly after a couple days, the new USB Host Shield arrives. I open its packaging and start to connect it to the ttgo. The ttgo is connected to a blank PCB which has the wiring and header pins to connect the USB Host Shield to the ttgo. I connect all the parts together and plug in the controller excepting it to fully operate as it used did. And to my surprise, the joystick still was still not able to connect to the ttgo. 
+## Replacing The USB Host Shield
+Shortly after a couple days, the new USB Host Shield arrives. I open its packaging and connect it to the ttgo. The ttgo is connected to a blank PCB which has the wiring and header pins to connect the both boards together. I connect all the parts together and plug in the joystick excepting it to fully operate as it used did. And to my surprise, it still was not able to connect to the ttgo. 
 
-At this point, I am dumbfounded. How is this not able to work? My supervisor has told me this worked in the past with these components and wiring so how is it not able to work now? I do a bit of reading with the past history of the wheelchair and I find that it looks like the previous iterations of the joystick functionality have worked over Serial. These images below show the internals of the joystick being stripped and replaced so it could be connected over Serial. 
+At this point, I am dumbfounded. How is this not able to work? My supervisor has told me this worked in the past with these components and wiring so how is it not able to work now? I do a bit of reading with the past history of the wheelchair and I find that it looks like the previous iterations of the joystick functionality used to worked over Serial. These images below show the internals of the joystick being stripped and replaced so it could be connected over Serial. 
 
 [Insert research paper with USB]
 
-I also found some videos on Instagram of the previous student who had worked on the wheelchair. It looks like from these videos that they had replaced the previous joystick with the Logitech one. My assumption from these images is that they had an Arduino Uno which was attached to the USB Host Shield which was responsible for reading the joystick inputs and then converting them to serial. And then the ttgo was attached on top of both boards and the Serial information from the Arduino Uno was sent to the ttgo. 
+I also found some videos on Instagram of the previous student who had worked on the wheelchair. It looks like from these videos that they had replaced the previous joystick with the Logitech one. My assumption from these images is that they had an Arduino Uno attached to the USB Host Shield which was responsible for reading the joystick inputs and then converting them to serial. And then the ttgo was attached on top of both boards and the serial information from the Arduino Uno was sent to the ttgo. 
 
 [Insert Instagram photos jlrobotics]
 
 Because I didn't know this at the time and I was unsure how to re-implement this previous protocol with the hardware I was given, I decided to change it to a more simpler solution and use just the USB Host Shield with the ttgo operating over the USB protocol instead. 
 
 ### Testing USB Host Library with ESP32
-The first step was to see if I can connect a regular ESP32 to the USB Host Shield. I wanted to see if the USB Host Shield 2.0 Library was compatible with the specific board that I was using. I could see from the documentation on the GitHub page that ESP32's were supported which was great news. The docs specify that you can connect it by wiring the ESP32 to the shield using these pins:
-```
-ESP32 is supported using the arduino-esp32
-GPIO5 : SS, GPIO17 : INT, GPIO18 : SCK, GPIO19 : MISO, GPIO23 : MOSI
-```
-I wired it up according to there docs and loaded up one of there example Arduino sketches that they had in the repo. Conveniently they had an example sketch that was specifically for my joystick. So I flashed the ESP32 with the `le3dp.ino` sketch and it worked... well, partially. When the ESP32 boots up for the first few seconds, I am able to get input from the joystick perfectly. But then after a few seconds, the serial monitor freezes and I no longer receive any input from the joystick. Here is an example of what was happening:
+The first step was to wire up the USB Host Sheild according to the documentation on the USB Host Shield 2.0 Libraries git page. I wired it up according to there docs and loaded up one of there example Arduino sketches that they had in the repo. Conveniently they had an example sketch that was specifically for my joystick. So I flashed the ESP32 with the [`le3dp.ino`](https://github.com/felis/USB_Host_Shield_2.0/blob/master/examples/HID/le3dp/le3dp.ino) sketch and it worked... well, partially. When the ESP32 boots up for the first few seconds, I am able to get input from the joystick perfectly. But then shortly after, the serial monitor freezes and I no longer receive any input from the joystick. Here is an example of what was happening:
 
 [Insert image of esp32 wired to shield]
 
 [Insert video of with esp32 problem]
 
-I thought to myself that I could test to see if this issue still happens with the ttgo board or I would have to adjust the wheelchair code to account for the joystick freezing.
+At this moment, I basically had two options. I could test to see if this issue still happens with the ttgo board and hope it works without freezing or I would have to adjust the wheelchair code to account for the freezing.
 
-### Forking USB Host Library 2.0 to work for ttgo T-Display v1.1
-Trying to wire the ttgo to the USB Host Shield came with a bit of a challenge. Because the ttgo has a different pin layout to generic ESP32's, some of the exposed pins were missing for me to use. For example, GPIO5 was not exposed for me to use because it was internally being used for the built-in display.
+### Forking USB Host Library 2.0 to Work for ttgo T-Display v1.1
+Trying to wire the ttgo to the USB Host Shield came with a bit of a challenge. Because the ttgo has a different pin layout to generic ESP32's, some of the exposed pins were missing for me to use. For example, GPIO5 which is used for SS, was not exposed for me to use because it was internally being used for the built-in display.
 
-After doing a bit of research, some user had stated that the SPI pins used to connect external SPI peripherals are the following:
+After doing a bit of research, some user had stated that the SPI pins used to connect external SPI peripherals to the ttgo are the following:
 ```
 #define PIN_MISO  27  // GPIO27
 #define PIN_MOSI  26  // GPIO26
@@ -109,7 +104,7 @@ The fork of my USB Host Shield 2.0 library can be found [here](https://github.co
 
 ### Refactoring Wheelchair Arduino Code
 #### Old Wheelchair Code
-The old wheelchair Arduino sketch for the ttgo receives ASCII hexadecimal input from the Arduino Uno and converts them into to integers which are then converted to motor speed values based on the `MAX_SPEED`. The `FrontL`, `FrontR`, `BackL` and `BackR` are then sent to the Sabertooth Controller which operates the motors:
+The old wheelchair Arduino sketch for the ttgo receives ASCII hexadecimal input from the Arduino Uno and converts them into integers which are then converted to motor speed values based on the `MAX_SPEED`. The `FrontL`, `FrontR`, `BackL` and `BackR` are then sent to the Sabertooth Controller which operates the motors:
 ```C
 // Get Joystick Values
 x = getJoystickValue('X'); // X Joystick value received from Arduino Uno
@@ -151,11 +146,11 @@ int getJoystickValue(char val) {
   int X_VAL = StrToHex(content);
   return X_VAL;
 }
-
 ```
-I had to change this logic to use the X, Y and Z values received over USB. I used the example Joystick sketch as a base from the USB Host Shield 2.0 Library in-order to receive the integer values from x,y,z and incorporated it into the wheelchair code. Because we are eliminating the ASCII Serial bridge and receiving the raw integers straight from the joystick, there was not much work to be done other than removing the ASCII conversion code and using the raw integers as the joystick values. All the code which calculate the motor speeds can remain the same. Here is the example of how it works:
 
 #### New Wheelchair Code
+I had to change the previous logic to use the X, Y and Z values received over USB. I used the example Joystick sketch as a base from the USB Host Shield 2.0 Library in-order to receive the integer values of X, Y and Z and incorporated it into the wheelchair code. Because we are eliminating the ASCII Serial bridge and receiving the raw integers straight from the joystick, there was not much work to be done other than removing the ASCII conversion code and using the raw integers as the joystick values. All the code which calculate the motor speeds can remain the same. Here is an example of how it works:
+
 ```C
 // Joystick Variables
 int Xval;   // 0 - 1023
@@ -197,11 +192,11 @@ Here is a demo of the joystick operating the wheelchair motors!!!
 
 # PIR Sensors
 
-After this was done, my supervisor asked me if I was able to extend the functionality of the wheelchair. He said it would be nice if there was a collision system where the wheelchair would avoid hitting a wall for example if it got to close. He said that there are spare PIR sensors that the lab does not use that could be used for the system. 
+After this was done, my supervisor asked me if I was able to extend the functionality of the wheelchair. He said it would be nice if there was a collision system where the wheelchair would avoid hitting walls if it got too close. He said that there are spare PIR sensors lying around the lab that could be used for the system. 
 
 [Insert PIR Sensor here]
 
-The PIR sensor that I was given was the [Sharp GP2Y0A21YK0F Analog Distance Sensor.](https://www.pololu.com/file/0J85/gp2y0a21yk0f.pdf) It's an analog infrared proximity sensor that can measure up to 80cm. The sensor outputs an analog voltage based on how close an object is to the sensor. We can use an equation to convert the voltage to a cm value for the collision system:
+The PIR sensor that I was given was the [Sharp GP2Y0A21YK0F Analog Distance Sensor.](https://www.pololu.com/file/0J85/gp2y0a21yk0f.pdf) It's an analog infrared proximity sensor that can measure up to 80cm. The sensor outputs an analog voltage based on how close an object is to the sensor. We can use an equation to convert the voltage to a cm value:
 
 [insert measuring chart]
 
@@ -220,14 +215,14 @@ int readSensor(int pin) {
 }
 ```
 
-I then wrote some code that prohibited the motor wheels from moving in the direction of the sensor if there was an object close to it. I did this by overwriting the `BackL`,`BackR`,`FrontL` and `FrontR` values with 0 if they tried to exceed the direction they were going. 
+I then wrote some code that prohibited the motor wheels from moving in the direction of the sensor if there was an object close to it. I did this by overwriting the `BackL`, `BackR`, `FrontL` and `FrontR` values with 0 if they tried to exceed the direction they were going. 
 
 [Insert video of demo]
 
 ## Connecting 5 PIR sensors to the ttgo
-So now that the I know the sensors work, I then proceeded to connect 5 sensors to the ttgo for testing. I put each sensor data wire on an analog pin and then the 5v and GND wires were all shared on the ttgo. However, I ran into some trouble when I started to connect more than a couple sensors. The distance readings started to fluctuate heavily and where not accurate in there readings. This made the collision system basically useless because each sensor would keep triggering the wheelchair to stop because the values kept fluctuating inaccurately.
+So now that I know the sensors work, I then proceeded to connect 5 sensors to the ttgo for testing. I put each sensor data wire on an analog pin and then the 5v and GND wires were all shared on the ttgo. However, I ran into some trouble when I started to connect more than a couple sensors. The distance readings started to fluctuate heavily and where not accurate in there readings. This made the collision system basically useless because each sensor would keep triggering the wheelchair to stop because the values kept fluctuating inaccurately.
 
-After some more research, I found that the manufacturer recommends to connect a 10µF capacitor close to the sensor to stabilise the power supply line. So tried this with a sensor and a breadboard but the readings were still fluctuating. I decided to connect a 100µF capacitor to see if that fixed it and it did...mostly. The distance from each sensor was way more back accurate but it was still fluctuating a bit. One of my assumptions was that it could be because I am powering the ttgo over my laptop USB port, and if I connect it to the wheelchair, it will be operating through 5v and GND inputs rather than through USB. So I hoped that this would give a more clean power line which as a result makes the sensor voltages more stable and it did.  
+After some more research, I found that the manufacturer recommends to connect a 10µF capacitor along the sensor power lines to stabilise the voltage readings. So I tried this with a sensor and a breadboard but the readings were still fluctuating. I decided to connect a 100µF capacitor to see if that fixed it and it did...mostly. The distance from each sensor was way more accurate but it was still fluctuating a bit. One of my assumptions was that it could be because I am powering the ttgo over my laptop USB port, and if I connect it to the wheelchair, it will be operating through 5v and GND inputs rather than through USB. So I hoped that this would give a more clean power line which as a result makes the sensor voltages more stable and it did.
 
 [Insert capacitor photo]
 
@@ -335,8 +330,10 @@ if (started && collisionEnabled) {
 # Wiring
 If you want to do something similar yourself, I've attached a wiring diagram of how the wheelchair is connected. 
 
+[wiring image]
+
 # Final Result
-The wheelchair is finally complete and fully operational. This was a really enlightening experience for me. I have never done any sort of hands-on robotics project before so it was really educational for me and I learned a lot about how these robotic systems work. I've only done simple ESP32 work before and seeing what these micro-controllers for real world applications gave me more appreciation for the capabilities of what the Arduino/ESP framework can do.
+The wheelchair is finally complete and fully operational. This was a really enlightening experience for me. I have never done any sort of hands-on robotics project before so it was really educational for me and I learned a lot about how these robotic systems work. I've only done simple ESP32 work before and seeing the capabilities of these micro-controllers for real world applications gave me a greater appreciation for what the Arduino/ESP framework can do.
 
 I'd like to thank [Thomas Braunl](https://research-repository.uwa.edu.au/en/persons/thomas-braunl) and [Kieran Quirke-Brown](https://research-repository.uwa.edu.au/en/persons/kieran-quirke-brown) for giving me the opportunity to work on this project. I hope my contributions to the wheelchair will serve as a valuable asset for future research and practical deployment.
 
