@@ -1,4 +1,4 @@
-/* Feel free to use the css but its pretty ugly. You have been warned! */
+/* Feel free to use the css. */
 
 @font-face {
   font-family: "Paradise";
@@ -278,11 +278,19 @@
   padding-bottom: 10px;
 }
 
-/* word wrap for code blocks */
-pre, code {
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
+/* Scrollable code blocks */
+pre {
+  padding: 1em;
+  overflow: auto;
+}
+
+p code,li code:not(pre code) {
+    background-color: #eeeeee;
+    white-space: pre-wrap;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: .85rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1),0 1px 1px rgba(0,0,0,.1),0 2px 1px -1px rgba(0,0,0,.12)
 }
 
 table {
