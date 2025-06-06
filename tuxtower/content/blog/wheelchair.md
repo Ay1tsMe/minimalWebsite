@@ -1,6 +1,7 @@
 +++
 title = "Repairing an Omni-Directional Wheelchair"
 date = 2025-06-04
+authors = ["Adam Wyatt"]
 +++
 
 {{ resize_image(path="images/blog/wheelchair.jpg", width=500, height=700 op="fit") }}

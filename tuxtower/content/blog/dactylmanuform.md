@@ -1,6 +1,7 @@
 +++
 title = "I Built A Wireless Dactyl Manuform"
 date = 2024-03-20
+authors = ["Adam Wyatt"]
 +++
 
 Over the holidays, I decided as a side project to build a dactyl manuform keyboard. I recently got a 3D printer for christmas so I thought this would be a good way to put it to the test! That's when I came across the dacyl manuform ergonomic keyboard which you can build with only 3d printed parts and electronics from Aliexpress.

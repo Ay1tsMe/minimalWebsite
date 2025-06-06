@@ -1,6 +1,7 @@
 +++
 title = "How to rip and tag CD's PROPERLY!"
 date = 2024-08-26
+authors = ["Adam Wyatt"]
 +++
 
 # "Why do I need to rip CD's? I got Spotify instead..."

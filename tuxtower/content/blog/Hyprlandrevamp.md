@@ -1,6 +1,7 @@
 +++
 title = "Look at this beautiful rice!"
 date = 2023-10-26
+authors = ["Adam Wyatt"]
 +++
 
 {{ resize_image(path="images/blog/rice.jpg", width=600, height=400 op="fit") }}
