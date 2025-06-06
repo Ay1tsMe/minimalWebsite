@@ -1,6 +1,7 @@
 +++
 title = "Hyprland is the future! (My main desktop workflow)"
 date = 2023-07-01
+authors = ["Adam Wyatt"]
 +++
 
 # Ubuntu

@@ -1,6 +1,7 @@
 +++
 title = "New Zealand 2024"
 date = 2024-03-02
+authors = ["Adam Wyatt"]
 +++
 
 Over the past month, I have been travelling all around Auckland, New Zealand with my girlfriend. It's the first time I've traveled outside of the country by myself. 

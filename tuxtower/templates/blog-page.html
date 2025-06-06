@@ -21,7 +21,11 @@
       {{ page.title }}
     </h1>
     <div class="blog-meta">
-      <p class="subtitle"><strong>{{ page.date }}</strong></p>
+      <p class="subtitle"><strong>{{ page.date }} -
+        {% for author in page.authors %}
+          {{ author }}{% if not loop.last %}, {% endif %}
+        {% endfor %}
+        </strong></p>
       <p class="reading-time"><strong>Reading time: {{ page.reading_time }} minutes</strong></p>
     </div>
 

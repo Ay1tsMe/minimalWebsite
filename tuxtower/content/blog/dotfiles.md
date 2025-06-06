@@ -1,6 +1,7 @@
 +++
 title = "Using stow to manage my dotfiles"
 date = 2025-02-22
+authors = ["Adam Wyatt"]
 +++
 
 # "What is `stow`?"

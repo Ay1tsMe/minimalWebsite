@@ -1,6 +1,7 @@
 +++
 title = "iPod's are cool... iPhones are cringe."
 date = 2023-06-19
+authors = ["Adam Wyatt"]
 +++
 
 # The Smartphone

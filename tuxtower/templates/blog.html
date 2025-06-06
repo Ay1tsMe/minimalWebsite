@@ -17,11 +17,15 @@
         </div>
   <hr>
   <h2 class="blog-subhead">
-    List of Blog Posts
+    Blog Posts
   </h2>
-  <ul>
+  <input type="text" id="search-input" placeholder="Search..." />
+
+  <ul id="search-results">
     {% for page in section.pages %}
-    <li>[<span class="date">{{ page.date }}</span>] <a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+    <li class="searchable" data-title="{{ page.title | escape }}" data-url="{{ page.permalink | safe }}" data-date="{{ page.date }}">
+      [<span class="date">{{ page.date }}</span>] <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+    </li>
     {% endfor %}
   </ul>
   <hr>
