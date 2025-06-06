@@ -24,6 +24,7 @@ external_links_target_blank = true
 [search]
 index_format = "fuse_json"
 include_path = true
+include_content = true
 
 [extra]
 # Put all your custom variables here

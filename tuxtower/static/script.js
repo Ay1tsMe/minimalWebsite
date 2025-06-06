@@ -100,21 +100,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     // includeScore: false,
     // ignoreDiacritics: false,
     // shouldSort: true,
-    // includeMatches: false,
+    // includeMatches: true,
     // findAllMatches: false,
     // minMatchCharLength: 1,
     // location: 0,
-    // threshold: 0.6,
+    threshold: 0.3,
     // distance: 100,
     // useExtendedSearch: false,
-    // ignoreLocation: false,
+    ignoreLocation: true,
     // ignoreFieldNorm: false,
     // fieldNormWeight: 1,
     keys: [
       "title",
       "body"
-    ],
-    threshold: 0.4
+    ]
   };
 
   const fuse = new Fuse(filteredList, fuseOptions);
@@ -128,7 +127,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       return;
     }
 
-    const results = fuse.search(query).slice(0, 10); // Max 10 results
+    const results = fuse.search(query);
 
     resultsContainer.innerHTML = results.map(result => {
       const item = result.item;
