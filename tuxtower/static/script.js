@@ -89,6 +89,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch("/search_index.en.json");
   const list = await response.json();
 
+  // Remove unwanted search entries
+  const filteredList = list.filter(item => {
+    const path = item.path;
+    return !(path === "/" || path === "/blog/");
+  });
+
   const fuseOptions = {
     // isCaseSensitive: false,
     // includeScore: false,
@@ -111,13 +117,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     threshold: 0.4
   };
 
-  const fuse = new Fuse(list, fuseOptions);
+  const fuse = new Fuse(filteredList, fuseOptions);
 
   input.addEventListener("input", function () {
     const query = input.value.trim();
 
     if (query.length < 1) {
-      resultsContainer.innerHTML = originalList;
+      resultsContainer.innerHTML = "";
+      originalItems.forEach(item => resultsContainer.appendChild(item.cloneNode(true)));
       return;
     }
 

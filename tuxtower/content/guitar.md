@@ -1,5 +1,6 @@
 +++
 template = "guitar.html"
+in_search_index = false
 +++
 
 # My Guitar Progress
