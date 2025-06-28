@@ -500,6 +500,7 @@ tr:nth-child(even) {
 .tree li {
   font-family: "Menlo", monospace;
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 mark {

@@ -135,15 +135,20 @@ document.addEventListener("DOMContentLoaded", async function () {
       const date = dateMap[item.url] || "";
 
       /* ---------- build bullet lines ---------- */
-      const bullets = [];
+      const usedSnippets = new Set();
       for (const m of matches) {
-        if (bullets.length >= MAX_SNIPPETS) break;
-        const source = m.key === "title" ? item.title : item.body;
-        bullets.push(buildSnippet(source, m, query));
+        if (usedSnippets.size >= MAX_SNIPPETS) break;
+
+        const snip = buildSnippet(m, query);
+
+        // Avoid duplicates (e.g. same text hit twice in fuzzy search)
+        if (!usedSnippets.has(snip)) {
+          usedSnippets.add(snip);
+        }
       }
 
-      const bulletHTML = bullets.map((s, i) => {
-        const branch = (i === bullets.length - 1 ? "└──" : "├──");
+      const bulletHTML = [...usedSnippets].map((s, i, arr) => {
+        const branch = i === arr.length - 1 ? "└──" : "├──";
         return `<li>${branch} ${s}</li>`;
       }).join("");
 
@@ -208,14 +213,18 @@ function escapeRegExp(str) {           // for building a safe RegExp
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-function buildSnippet(text, match, query) {
-  // `match.indices` is an array of [start,end] ranges; we just need the first one
-  const [start, end] = match.indices[0];
-  const left  = Math.max(0, start - CONTEXT_CHARS);
-  const right = Math.min(text.length, end + CONTEXT_CHARS + 1);
-  const slice = text.slice(left, right);
+function buildSnippet(match, query) {
+  const text = match.value;              // this is the string Fuse inspected
+  const [start, end] = match.indices[0]; // first hit in that string
 
-  // highlight every occurrence of the query inside that slice
-  const re = new RegExp(escapeRegExp(query), "gi");
-  return slice.replace(re, "<mark>$&</mark>");
+  const leftIdx  = Math.max(0, start - CONTEXT_CHARS);
+  const rightIdx = Math.min(text.length, end + CONTEXT_CHARS + 1);
+  let snippet    = text.slice(leftIdx, rightIdx);
+
+  // collapse all whitespace (newline, tab, etc.) into single spaces
+  snippet = snippet.replace(/\s+/g, ' ').trim();
+
+  // make sure the term is highlighted
+  const re = new RegExp(escapeRegExp(query), 'gi');
+  return snippet.replace(re, '<mark>$&</mark>');
 }
