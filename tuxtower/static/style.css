@@ -480,3 +480,29 @@ tr:nth-child(even) {
 #search-results {
   padding-left: 20px;
 }
+
+.highlight {
+  background: #ffe26e;
+  padding: 0 2px;
+}
+
+/* Search-tree */
+.tree {
+  list-style: none;
+  margin: .25em 0 0 1.6em;
+  padding: 0;
+}
+
+.tree-root {
+  margin-bottom: 1em;
+}
+
+.tree li {
+  font-family: "Menlo", monospace;
+  white-space: pre-wrap;
+}
+
+mark {
+  background: #ffe26e;
+  padding: 0 2px;
+}

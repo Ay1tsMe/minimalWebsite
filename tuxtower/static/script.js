@@ -97,12 +97,12 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   const fuseOptions = {
     // isCaseSensitive: false,
-    // includeScore: false,
+    includeScore: true,
     // ignoreDiacritics: false,
     // shouldSort: true,
-    // includeMatches: true,
+    includeMatches: true,
     // findAllMatches: false,
-    // minMatchCharLength: 1,
+    minMatchCharLength: 1,
     // location: 0,
     threshold: 0.3,
     // distance: 100,
@@ -128,14 +128,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     const results = fuse.search(query);
+    console.log(results);
 
-    resultsContainer.innerHTML = results.map(result => {
-      const item = result.item;
+    resultsContainer.innerHTML = results.map(res => {
+      const { item, matches } = res;
       const date = dateMap[item.url] || "";
+
+      /* ---------- build bullet lines ---------- */
+      const bullets = [];
+      for (const m of matches) {
+        if (bullets.length >= MAX_SNIPPETS) break;
+        const source = m.key === "title" ? item.title : item.body;
+        bullets.push(buildSnippet(source, m, query));
+      }
+
+      const bulletHTML = bullets.map((s, i) => {
+        const branch = (i === bullets.length - 1 ? "└──" : "├──");
+        return `<li>${branch} ${s}</li>`;
+      }).join("");
+
       return `
-        <li>
+        <li class="tree-root">
           [<span class="date">${date}</span>]
-          <a href="${item.url}">${item.title || item.url}</a>
+          <a href="${item.url}">${item.title}</a>
+          <ul class="tree">${bulletHTML}</ul>
         </li>
       `;
     }).join("");
@@ -146,3 +162,60 @@ document.addEventListener("DOMContentLoaded", async function () {
     resultsContainer.innerHTML = items.map(item => item.outerHTML).join("");
   }
 });
+
+// Highlight search-result helper
+function highlight(fuseSearchResult, highlightClassName = 'highlight') {
+  const set = (obj, path, value) => {
+    const parts = path.split('.');
+    for (let i = 0; i < parts.length - 1; i++) obj = obj[parts[i]];
+    obj[parts[parts.length - 1]] = value;
+  };
+
+  const generateHighlightedText = (text, regions = []) => {
+    let out = '';
+    let from = 0;
+
+    regions.forEach(r => {
+      const [start, end] = r;
+      out += [
+        text.slice(from, start),
+        `<span class="${highlightClassName}">`,
+        text.slice(start, end + 1),
+        '</span>'
+      ].join('');
+      from = end + 1;
+    });
+
+    return out + text.slice(from);
+  };
+
+  return fuseSearchResult
+    .filter(({ matches }) => matches && matches.length)
+    .map(({ item, matches }) => {
+      const copy = { ...item };                 // shallow copy so we don’t mutate original
+      matches.forEach(m =>
+        set(copy, m.key, generateHighlightedText(m.value, m.indices))
+      );
+      return copy;
+    });
+}
+
+// search text snippet helper
+const MAX_SNIPPETS  = 3;   // at most 3 bullets per post
+const CONTEXT_CHARS = 45;  // characters to show on each side of the hit
+
+function escapeRegExp(str) {           // for building a safe RegExp
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function buildSnippet(text, match, query) {
+  // `match.indices` is an array of [start,end] ranges; we just need the first one
+  const [start, end] = match.indices[0];
+  const left  = Math.max(0, start - CONTEXT_CHARS);
+  const right = Math.min(text.length, end + CONTEXT_CHARS + 1);
+  const slice = text.slice(left, right);
+
+  // highlight every occurrence of the query inside that slice
+  const re = new RegExp(escapeRegExp(query), "gi");
+  return slice.replace(re, "<mark>$&</mark>");
+}
