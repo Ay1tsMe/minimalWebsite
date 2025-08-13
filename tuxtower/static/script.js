@@ -13,7 +13,6 @@ var quotes = [
     "Church of Emacs",
     "https://tuxtower.net",
     "I use arch btw",
-    "Everything I want to do is illegal",
     "I debloated my workstation",
     "I am way too dumb to use ubuntu",
     "I got rid of my mattress, it's bloat",
@@ -135,24 +134,21 @@ document.addEventListener("DOMContentLoaded", async function () {
       const date = dateMap[item.url] || "";
 
       /* ---------- build bullet lines ---------- */
-      const usedSnippets = new Set();
+      const snippets = new Map();
 
-      // 1️⃣  try literal matches in **title** and **body**
       ['title', 'body'].forEach(key => {
-        if (usedSnippets.size >= MAX_SNIPPETS) return;
+        if (snippets.size >= MAX_SNIPPETS) return;
         const snip = buildSnippetLiteral(item[key] || '', query);
-        if (snip) usedSnippets.add(snip);
+        if (snip) snippets.set(canon(snip), snip);
       });
 
-      // 2️⃣  if we still have room, use Fuse fuzzy snippets (may not contain query)
       for (const m of matches) {
-        if (usedSnippets.size >= MAX_SNIPPETS) break;
-        const src  = m.key === 'title' ? item.title : item.body;
-        const snip = buildSnippet(m, query);          // your existing fuzzy helper
-        if (!usedSnippets.has(snip)) usedSnippets.add(snip);
+        if (snippets.size >= MAX_SNIPPETS) break;
+        const snip = buildSnippet(m, query);
+        snippets.set(canon(snip), snip);       // duplicates automatically overwritten
       }
 
-      const bulletHTML = [...usedSnippets].map((s, i, arr) => {
+      const bulletHTML = [...snippets.values()].map((s, i, arr) => {
         const branch = i === arr.length - 1 ? '└──' : '├──';
         return `<li>${branch} ${s}</li>`;
       }).join("");
@@ -252,4 +248,12 @@ function buildSnippetLiteral(fullText, query) {
   // highlight *all* instances inside the slice
   const hiRegex = new RegExp(escapeRegExp(query), 'gi');
   return snippet.replace(hiRegex, '<mark>$&</mark>');
+}
+
+function canon(text) {
+  return text
+    .replace(/<[^>]+>/g, '')   // remove <mark> etc.
+    .replace(/\s+/g, ' ')      // collapse whitespace
+    .trim()
+    .toLowerCase();
 }
