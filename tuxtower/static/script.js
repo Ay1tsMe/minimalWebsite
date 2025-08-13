@@ -44,7 +44,7 @@ function getRandomInt(min, max) {
 function changeRandomImage() {
   const totalImages = 6;
   const randomImageNumber = getRandomInt(1, totalImages);
-  const randomImagePath = `images/gifs/destinyisland${randomImageNumber}.gifv`;
+  const randomImagePath = `images/gifs/destinyisland${randomImageNumber}.webp`;
 
   const imgElement = document.getElementById('randomImage');
   if (imgElement) {
