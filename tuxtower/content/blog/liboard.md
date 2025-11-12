@@ -64,7 +64,11 @@ The next step was to create a `calibrate_thresholds.py` script that will walk th
 
 As of writing this, my PR has not been merged into the main branch, but you can still try it out by using my branch instead: [https://github.com/LiBoard/Python/pull/4](https://github.com/LiBoard/Python/pull/4).
 
-## Demo
+### `calibrate_thresholds.py` demo
+
+[Insert video here]
+
+## Liboard Demo
 Here is a video of the board in action. I am running the `board_api.py` script which connects to the Lichess API. I then can play Rapid or Classical games on the board. It works by just simply moving my piece to where I want it, then moving my opponents piece when they have played there move. 
 
 [Insert video here]
