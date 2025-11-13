@@ -268,7 +268,7 @@ For listening to my music on the go, I use [Finamp](https://github.com/jmshrv/fi
 Because I am running a home assistant instance for all my smart devices, I opted to use a music client which can stream my `Jellyfin` instance to my Sonos speakers through the house. [Music-Assistant](https://music-assistant.io/) is great for this. I installed it onto home asssitant, then configured it to connect to my Sonos speakers and to `Jellyfin` and now I can listen to my music through Sonos without using their proprietary app which over the recent months has been quite [controversial](https://www.theverge.com/2024/7/25/24206203/sonos-ceo-apology-redesigned-app-controversy). And with the power of automations, I can automate to play music on my speakers at certain parts of the day!
 
 Here is a video showcasing that:
-{{ local_video(path="videos/sonos.mp4") }}
+{{ local_video(mp4="videos/sonos.mp4") }}
 
 # Video Tutorial
 <iframe width="700" height="400" src="https://www.youtube.com/embed/OlOxpEviroY?si=1uVNfY59uWP3ewRV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

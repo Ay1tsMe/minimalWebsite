@@ -73,9 +73,9 @@ At this point, I am dumbfounded. How is this not able to work? My supervisor has
 
 I also found some videos on Instagram of the previous student who had worked on the wheelchair. It looks like from these videos that they had replaced the previous joystick with the Logitech one. My assumption from these images is that they had an Arduino Uno attached to the USB Host Shield which was responsible for reading the joystick inputs and then converting them to serial. And then the ttgo was attached on top of both boards and the serial information from the Arduino Uno was sent to the ttgo. 
 
-{{ local_video(path="videos/wheelchair-insta1.mp4", width=500, height=700) }}
+{{ local_video(mp4="videos/wheelchair-insta1.mp4", width=500, height=700) }}
 
-{{ local_video(path="videos/wheelchair-insta2.mp4", width=500, height=700) }}
+{{ local_video(mp4="videos/wheelchair-insta2.mp4", width=500, height=700) }}
 
 Because I didn't know this at the time and I was unsure how to re-implement this previous protocol with the hardware I was given, I decided to change it to a more simpler solution and use just the USB Host Shield with the ttgo operating over the USB protocol instead. 
 
@@ -84,7 +84,7 @@ The first step was to wire up the USB Host Sheild according to the documentation
 
 {{ resize_image(path="images/blog/esp32-usb-wiring.jpeg", width=600, height=800 op="fit") }}
 
-{{ local_video(path="videos/esp32-usb-wiring.mp4", width=600, height=800) }}
+{{ local_video(mp4="videos/esp32-usb-wiring.mp4", width=600, height=800) }}
 
 At this moment, I basically had two options. I could test to see if this issue still happens with the ttgo board and hope it works without freezing or I would have to adjust the wheelchair code to account for the freezing.
 
@@ -195,7 +195,7 @@ int BackR = constrain((y + x + z) * MAX_SPEED * t, -MAX_SPEED, MAX_SPEED);
 
 Here is a demo of the joystick operating the wheelchair motors!!!
 
-{{ local_video(path="videos/joystick-demo.mp4", width=400, height=600) }}
+{{ local_video(mp4="videos/joystick-demo.mp4", width=400, height=600) }}
 
 # PIR Sensors
 
@@ -227,13 +227,13 @@ I then wrote some code that prohibited the motor wheels from moving in the direc
 ## Connecting 5 PIR sensors to the ttgo
 So now that I know the sensors work, I then proceeded to connect 5 sensors to the ttgo for testing. I put each sensor data wire on an analog pin and then the 5v and GND wires were all shared on the ttgo. However, I ran into some trouble when I started to connect more than a couple sensors. The distance readings started to fluctuate heavily and where not accurate in there readings. This made the collision system basically useless because each sensor would keep triggering the wheelchair to stop because the values kept fluctuating inaccurately.
 
-{{ local_video(path="videos/sensor-demo1.mp4", width=400, height=600) }}
+{{ local_video(mp4="videos/sensor-demo1.mp4", width=400, height=600) }}
 
 After some more research, I found that the manufacturer recommends to connect a 10µF capacitor along the sensor power lines to stabilise the voltage readings. So I tried this with a sensor and a breadboard but the readings were still fluctuating. I decided to connect a 100µF capacitor to see if that fixed it and it did...mostly. The distance from each sensor was way more accurate but it was still fluctuating a bit. One of my assumptions was that it could be because I am powering the ttgo over my laptop USB port, and if I connect it to the wheelchair, it will be operating through 5v and GND inputs from the Sabertooth rather than through USB. So I hoped that this would give a more clean power line which as a result makes the sensor voltages more stable and it did.
 
 {{ resize_image(path="images/blog/sensor-capacitor.jpg", width=400, height=500 op="scale") }}
 
-{{ local_video(path="videos/sensor-demo2.mp4", width=400, height=600) }}
+{{ local_video(mp4="videos/sensor-demo2.mp4", width=400, height=600) }}
 
 ## Creating Collision System in Wheelchair Arduino Code
 Now that I know the hardware is going to work, it's time to write the final software. The code first reads every distance value from each sensors analog pin, then once the wheelchair is armed and operating, there is an if statement which compares the sensor distances with a threshold. If it is too close, it zeros only the wheel motor values that would move further in that direction. Then I have some code that colours the wheels on the screen red depending on what sensor is activated:
@@ -330,7 +330,7 @@ if (started && collisionEnabled) {
 
 ## Collision Demo
 
-{{ local_video(path="videos/collision-demo.mp4") }}
+{{ local_video(mp4="videos/collision-demo.mp4") }}
 
 # Wiring
 If you want to do something similar yourself, I've attached a wiring diagram of how the wheelchair is connected. 
