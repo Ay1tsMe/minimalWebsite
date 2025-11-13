@@ -1,6 +1,6 @@
 +++
 title = "Building a DIY e-Board (Powered by Liboard)"
-date = 2025-10-13
+date = 2025-11-13
 authors = ["Adam Wyatt"]
 +++
 
