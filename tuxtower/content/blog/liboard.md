@@ -94,6 +94,6 @@ Here is a video of the board in action. I am running the `board_api.py` script w
 ## The Future
 While the chessboard functions almost flawlessly, it doesn't look that great aesthetically. At some point in the future, I want to make a new board that has similar components, just a different design. I think I would use reed switches with magnets in each piece for the square occupation mechanism instead of photoresistors, that way I don't have to recalibrate the sensors every time the light conditions change. One project I found that gave me some inspiration is this design by Olivier Mercier.
 
-<iframe width="600" height="340" src="https://www.youtube.com/watch?v=nGR9oMMSW_o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="600" height="340" src="https://www.youtube.com/embed/nGR9oMMSW_o?si=IHHgkAbPyEhswefq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 He used a preexisting chessboard that he bought off of Amazon and modified it to behave like a DGT board. Building something like this seems more elegant and refined. It's much more clean and you wouldn't even know its an electronic chessboard unless you flipped it over. I'll make another blog post about the new board I build once I get to it.
