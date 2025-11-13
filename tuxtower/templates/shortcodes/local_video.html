@@ -1,5 +1,19 @@
 <div class="video-container">
-    <video width="{{ width | default(value="640") }}" height="{{ height | default(value="360") }}" controls {% if autoplay %}autoplay{% endif %} {% if loop %}loop{% endif %}>
-        <source src="{{ get_url(path=path) }}" type="video/mp4">
+    <video
+        width="{{ width | default(value=640) }}"
+        height="{{ height | default(value=360) }}"
+        controls
+        {% if autoplay %}autoplay{% endif %}
+        {% if loop %}loop{% endif %}
+    >
+        {# webm #}
+        {% if webm %}
+            <source src="{{ get_url(path=webm) }}" type="video/webm">
+        {% endif %}
+
+        {# mp4 #}
+        {% if mp4 %}
+            <source src="{{ get_url(path=mp4) }}" type="video/mp4">
+        {% endif %}
     </video>
 </div>
