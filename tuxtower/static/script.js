@@ -13,7 +13,6 @@ var quotes = [
     "Church of Emacs",
     "https://tuxtower.net",
     "I use arch btw",
-    "Everything I want to do is illegal",
     "I debloated my workstation",
     "I am way too dumb to use ubuntu",
     "I got rid of my mattress, it's bloat",
@@ -26,6 +25,13 @@ var quotes = [
     "🌴",
     "🖥",
     "💾",
+    "Thou shall not kill -9",
+    "What you’re referring to as Linux, is in fact, GNU/Linux, or as I’ve recently taken to calling it, GNU plus Linux",
+    "Start creating an offline media library... Now!",
+    "Jerome's Gambit",
+    "I'm probably playing golf right now",
+    "FUS",
+    "I'm the wireless dactyl manuform guy",
     "/home/tuxtower/.config"
   ];
   
