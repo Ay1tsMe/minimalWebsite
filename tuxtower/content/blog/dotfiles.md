@@ -7,7 +7,7 @@ authors = ["Adam Wyatt"]
 # "What is `stow`?"
 `stow` is a GNU program that manages symlinks across your system. It is especially useful for managing dotfiles system-wide across multiple devices. You simply run `stow` on the file and it will create a symlink to your desired location. Over the past month, I have been slowly migrating my dotfiles to be managed by `stow`, that way both my laptop and my desktop have the same dotfiles and I don't have to manually manage them anymore.
 
-{{ resize_image(path="images/blog/stow.png", width=1000, height=1200 op="fit") }}
+{{<image path="images/blog/stow.png" width={1000} height={1200} op="fit" />}}
 
 # How does it work?
 The basic workflow consists of the following:
@@ -20,7 +20,7 @@ You can then download the same git repo on your other devices and run `stow` to 
 
 This saves you a ton of effort. Normally you would have to manually overwrite your home directory dotfiles with the dotfiles in the git repo everytime there is a change or manually write `ln -s` for every dotfile you have. Whereas with `stow` these hassles are eliminated.
 
-{{ resize_image(path="images/blog/stowwojak.jpg", width=400, height=600 op="fit") }}
+{{<image path="images/blog/stowwojak.jpg" width={400} height={600} op="fit" />}}
 
 # How do I do this myself?
 

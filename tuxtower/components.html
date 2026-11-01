@@ -1,0 +1,13 @@
+{% component image(path: string, width: integer, height: integer, op: string = "fit") %}
+{% set img = resize_image(path=path, width=width, height=height, op=op) %}
+<img src="{{ img.url }}" />
+{% endcomponent image %}
+
+{% component video(mp4: string = "", webm: string = "", width: integer = 640, height: integer = 360, autoplay: bool = false, loop: bool = false) %}
+<div class="video-container">
+<video width="{{ width }}" height="{{ height }}" controls{% if autoplay %} autoplay{% endif %}{% if loop %} loop{% endif %}>
+{% if webm %}<source src="{{ get_url(path=webm) }}" type="video/webm">{% endif %}
+{% if mp4 %}<source src="{{ get_url(path=mp4) }}" type="video/mp4">{% endif %}
+</video>
+</div>
+{% endcomponent video %}

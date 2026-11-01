@@ -7,7 +7,7 @@ authors = ["Adam Wyatt"]
 # Ubuntu
 Over the past few months, I have tried to switch my main Desktop workflow over to Linux full-time. I had some experimentation with Ubuntu over a year on my laptop but I felt it too bloated and sluggish. As a new Linux user at the time, I was curious as to how people get there desktops looking so nice. I found that in GNOME, users can install plugins to change the way the desktop interface looks. I opted for lots of GNOME plugins that changed the taskbar and colour schemes without realising how inefficient and bloated this method of "ricing" was. My Ubuntu install was now looking cool but at what cost? 
 
-{{ resize_image(path="images/blog/ubuntu.png", width=200, height=400 op="fit") }}
+{{<image path="images/blog/ubuntu.png" width={200} height={400} op="fit" />}}
 
 The overall performance of my system had significantly dropped, especially considering I was running this on a Dell XPS 13. The battery life and overall performance seemed to deteriorate a lot faster with these plugins. 
 
@@ -25,11 +25,11 @@ Tiling window manager, smooth animations, modern aesthetic. This is exactly what
 # The now
 As I get comfortable using Hyprland on my laptop, I decided I want to use Windows less and start using Linux on my main desktop computer. I created a github repo of the Hyprland install that I then used to install it on my Desktop PC. I am now running a dual boot of Hyprland and Windows 11. Windows 11 for the occasional video game and Hyprland for everything else.
 
-{{ resize_image(path="images/blog/archmeme.jpeg", width=600, height=400 op="fit") }}
+{{<image path="images/blog/archmeme.jpeg" width={600} height={400} op="fit" />}}
 
 Over the few months I have been daily driving Hyprland, I am very pleased with the experience. My overall productivity has increased mainly due to transitioning from usuing the mouse to more hotkey based operations. I have surprisingly had a very seamless experience that I just did not get on Ubuntu's GNOME desktop environment. I feel I have more control over my system which is what I love about Hyprland/Arch.
 
-{{ resize_image(path="images/blog/wayland.png", width=600, height=400 op="fit") }}
+{{<image path="images/blog/wayland.png" width={600} height={400} op="fit" />}}
 
 # The issues
 While Hyprland has been mostly a breeze to set up and use. There is really only one hiccup that I havn't addressed which can be annoying for a select few of users including myself.
@@ -37,7 +37,7 @@ While Hyprland has been mostly a breeze to set up and use. There is really only 
 ### Screensharing
 Screensharing has been a pain to use. I believe it is mainly due to the fact Hyprland is using the wayland compositor whereas most programs are designed around X11. Discord screensharing does not work as of writing this. It is a black screen if you share your whole screen. You are able to share applications but it does not stream any audio. There have been some solutions I have come across. One is to use <a href="https://github.com/maltejur/discord-screenaudio" target="_blank">discord-screenaudio.</a> While this is a working solution, it is often tedious to open up another discord client just to share your screen with others. Another solution which is the one I primarily use is <a href="https://screensy.marijn.it" target="_blank">screensy.</a> This solution mostly works and is great to share your screen with others. However, on wayland, audio sharing is still not possible through screensy. This has prompted me to have to reboot back into Windows just to show my friends things on my screen that require audio.
 
-{{ resize_image(path="images/blog/screensharing.png", width=600, height=400 op="fit") }}
+{{<image path="images/blog/screensharing.png" width={600} height={400} op="fit" />}}
 
 # My current install script for people who care
 Linked below is my Hyprland install script that I have customized from SolDoesTech's install script. I have made some additional changes that better suited my needs and might suit yours that I address in the git. My current dotfiles are also linked below if you want the exact configuration that I have.

@@ -9,7 +9,7 @@ In today's ever-expanding world of technology, we live our everyday lives in con
 
 *"Someone may need to call me in-case of an emergency!".*
 
-{{ resize_image(path="images/blog/iPhones.png", width=600, height=400 op="fit") }}
+{{<image path="images/blog/iPhones.png" width={600} height={400} op="fit" />}}
 
 In reality however, the smartphone is used as a resource to remove yourself from the present. A distraction from reality. It has become second nature at this point to just pull out your phone and engage on unnecessary and time-wasting activities that bring you no value to life.
 
@@ -19,7 +19,7 @@ Recently, I have been trying to go out to various locations without my phone suc
 
 A couple of weeks ago, I was lounging by the beach just watching the world go by, sipping a nice cup of coffee. Two men brought down there kayak to paddle in the ocean. Accompanying them was a dog who was reluctant to let his owner paddle away alone. As one man tried desperately to prevent the dog from sprinting to the ocean, he couldn't hold on for too long and lost grip of the leash. The dog was now soaked and was happily swimming alongside his owner in the kayak. It was a funny and quite beautiful sight to see.
 
-{{ resize_image(path="images/blog/dogkayak.jpeg", width=600, height=400 op="fit") }}
+{{<image path="images/blog/dogkayak.jpeg" width={600} height={400} op="fit" />}}
 
 Moments like these often go by without much notice. Scenes that bring joy to others are overlooked nowadays because people are glued to there phones. Had I been mindlessly on my phone scrolling through social media or reading up on something that I don't really care about, I would of missed this spectacle and honestly, can't help but wonder how other moments like these I've missed due to my smartphone usage.
 
@@ -32,7 +32,7 @@ That brings me to what I've been doing recently for the past month...
 # The iPod
 I'm not entirely sure what led to it but I suddenly had an urge to rummage through some old drawers in my house to see what sort of old technology we had laying around that nobody used. Stashed away where our families old iPhones and iPad's, laying there, not being used after they had become slow or just outdated. One device that instantly caught my eye was my parents original iPod. It was a 5th generation iPod with the click wheel. A wave of nostalgia filled my mind. I suddenly transported back to a time filled with fond memories that current devices nowadays just don't offer. The iPod, Nintendo DSLite or the PS1 are things that come to mind that just make you remember great memories as a kid. Perhaps my inability to appreciate modern technologies to the same degree is a result of my youth, but that's a discussion for another time.
 
-{{ resize_image(path="images/blog/iPods.jpg", width=600, height=400 op="fit") }}
+{{<image path="images/blog/iPods.jpg" width={600} height={400} op="fit" />}}
 
 I quickly was tempted to resurrect the device. I wanted to know if their were any internal components damaged or if this was even usable almost 20 years from it's initial release date. I searched around for an old 30-pin cable and plugged it into power. Long and behold, I faintly see a battery icon indicating it's charging. I was instantly filled with excitement. I wait a couple more hours for it to charge until it becomes usable and to my suprise, all the original songs from my childhood were still on there. I plugged in some old headphones and everything seemed to work fine besides a hard to press center button which was a bit annoying but was usable. (I later fixed this problem by realigning the membrane sticker that was underneath the button.)
 

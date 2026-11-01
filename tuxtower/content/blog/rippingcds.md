@@ -6,7 +6,7 @@ authors = ["Adam Wyatt"]
 
 # "Why do I need to rip CD's? I got Spotify instead..."
 
-{{ resize_image(path="images/blog/cd.jpg", width=600, height=800 op="fit") }}
+{{<image path="images/blog/cd.jpg" width={600} height={800} op="fit" />}}
 
 This is the opinion of most people nowadays with the adoption of streaming platforms becoming mainstream technology. While I do think it is very convenient to be able to play any song I want from my device just by looking it up. The convenience is often blinded by the fact that you dont actually own the music your listening too. If you were to stop paying for your Spotify subscription today, all of a sudden your cherished playlists with all your favourite songs are washed away. You dont own those playlists and you dont own those songs. You are simply renting them and most people dont take that into consideration. They will be eager to pay for a subscription service with the false pretence that you now own all these songs and movies. Thats where physical media comes into play.
 
@@ -24,7 +24,7 @@ I will go through step by step on how I rip and tag CD's for Jellyfin on Linux. 
 
 # Ripping the CD (abcde)
 
-{{ resize_image(path="images/blog/abcde.png", width=700, height=800 op="fit") }}
+{{<image path="images/blog/abcde.png" width={700} height={800} op="fit" />}}
 
 First we need to rip the CD itself. The best program I have found that does this is [`abcde`](https://abcde.einval.com/wiki/FrontPage). This software by default rips a CD as a .wav file. This is all good but with a little bit of configuration, we can get it to encode the file to a .flac for us aswell as do some basic tagging with MusicBrainz. This is very convenient because .flac is generally the standard for lossless audio if we want to have the best sound-quality without the file being too large. And doing some of the tagging for us helps us later when we need to tag each album with `Picard`. I think this program only works on Linux systems but if you are on Windows or Mac, you can just rip the CD with whatever software you prefer and then use `ffmpeg` to convert the .wav to a .flac
 
@@ -143,7 +143,7 @@ It's super simple to run. All you do is insert your CD into your disc drive and 
 
 # Tagging the files
 
-{{ resize_image(path="images/blog/musicbrainz.png", width=700, height=800 op="fit") }}
+{{<image path="images/blog/musicbrainz.png" width={700} height={800} op="fit" />}}
 
 The current standard for tagging music is to use [MusicBrainz](https://musicbrainz.org/) database. This is an open-source database where anyone can contribute the metadata for albums. Most of my CD's that I own have been in this database. If for some reason yours isn't, you can always contribute your album to the database. That way once it's in you can use your album release to tag the .flac's you just ripped aswell as allowing other people to use your release to tag their music. 
 
@@ -179,7 +179,7 @@ Elton John; Melbourne Symphony Orchestra
 
 There are some cases where certain artists will have non-english letters in there name or they will go through a name change. This can lead to artists not being in english aswell as artists that are the same but have multiple artist profile for each name, for example "The Jacksons" and "The Jackson 5" being two seperate artists.
 
-{{ resize_image(path="images/blog/artistlocale.png", width=700, height=800 op="fit") }}
+{{<image path="images/blog/artistlocale.png" width={700} height={800} op="fit" />}}
 
 To fix this, go to `Options` then `Metadata`. Enable `Translate artist names to these locales where possible` and select `English`. Then enable `Use standardized names`.
 
@@ -262,13 +262,13 @@ Currently, I use `Jellyfin` to store and manage my tagged music. I can access th
 ### Mobile phone listening
 For listening to my music on the go, I use [Finamp](https://github.com/jmshrv/finamp) to connect to my `Jellyfin` instance. It's fast and efficient and if I don't want to stream the music over the internet, I can choose which albums to download onto local storage
 
-{{ resize_image(path="images/blog/finamp.jpg", width=300, height=500 op="fit") }}
+{{<image path="images/blog/finamp.jpg" width={300} height={500} op="fit" />}}
 
 ### Listening around the house
 Because I am running a home assistant instance for all my smart devices, I opted to use a music client which can stream my `Jellyfin` instance to my Sonos speakers through the house. [Music-Assistant](https://music-assistant.io/) is great for this. I installed it onto home asssitant, then configured it to connect to my Sonos speakers and to `Jellyfin` and now I can listen to my music through Sonos without using their proprietary app which over the recent months has been quite [controversial](https://www.theverge.com/2024/7/25/24206203/sonos-ceo-apology-redesigned-app-controversy). And with the power of automations, I can automate to play music on my speakers at certain parts of the day!
 
 Here is a video showcasing that:
-{{ local_video(mp4="videos/sonos.mp4") }}
+{{<video mp4="videos/sonos.mp4" />}}
 
 # Video Tutorial
 <iframe width="700" height="400" src="https://www.youtube.com/embed/OlOxpEviroY?si=1uVNfY59uWP3ewRV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
